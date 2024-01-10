@@ -330,6 +330,38 @@ return [
             'icon' => 'fas fa-fw fa-key',
         ], */
         [
+            'text'    => 'Expenditure',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-credit-card',
+            'submenu' => [
+                [
+                    'text' => 'Menu 1',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Menu 2',
+                    'url'  => '#',
+                ],
+                
+            ],
+        ],
+        [
+            'text'    => 'Omzet',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-plus-circle',
+            'submenu' => [
+                [
+                    'text' => 'Menu 1',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Menu 2',
+                    'url'  => '#',
+                ],
+                
+            ],
+        ],
+        [
             'text'    => 'Account Setting',
             'icon'    => 'fas fa-fw fa-user',
             'submenu' => [

@@ -46,6 +46,7 @@ class CoasController extends Controller
         try {
             
             $data = $this->getData($request);
+            dd($data);
             
             coas::create($data);
 

@@ -1,6 +1,14 @@
 
+<div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
+    <label for="id" class="col-md-2 control-label">COA</label>
+    <div class="col-md-10">
+        <input class="form-control" name="id" type="number" id="id" value="{{ old('id', optional($coas)->id) }}" minlength="1" maxlength="5" required="true" placeholder="Enter cs code here...">
+        {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('cs_code') ? 'has-error' : '' }}">
-    <label for="cs_code" class="col-md-2 control-label">Cs Code</label>
+    <label for="cs_code" class="col-md-2 control-label">CS Code</label>
     <div class="col-md-10">
         <input class="form-control" name="cs_code" type="number" id="cs_code" value="{{ old('cs_code', optional($coas)->cs_code) }}" minlength="1" maxlength="5" required="true" placeholder="Enter cs code here...">
         {!! $errors->first('cs_code', '<p class="help-block">:message</p>') !!}
@@ -26,7 +34,7 @@
 <div class="form-group {{ $errors->has('beginning_balance') ? 'has-error' : '' }}">
     <label for="beginning_balance" class="col-md-2 control-label">Beginning Balance</label>
     <div class="col-md-10">
-        <input class="form-control" name="beginning_balance" type="number" id="beginning_balance" value="{{ old('beginning_balance', optional($coas)->beginning_balance) }}" min="0" max="9" required="true" placeholder="Enter beginning balance here...">
+        <input class="form-control" name="beginning_balance" type="number" id="beginning_balance" value="{{ old('beginning_balance', optional($coas)->beginning_balance) }}" required="true" placeholder="Enter beginning balance here...">
         {!! $errors->first('beginning_balance', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
