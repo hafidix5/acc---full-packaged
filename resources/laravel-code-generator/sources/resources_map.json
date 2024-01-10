@@ -1,0 +1,42 @@
+[
+    {
+        "model-name": "departments",
+        "resource-file": "departments.json",
+        "table-name": "departments"
+    },
+    {
+        "model-name": "criterias",
+        "resource-file": "criterias.json",
+        "table-name": "criterias"
+    },
+    {
+        "model-name": "subjects",
+        "resource-file": "subjects.json",
+        "table-name": "subjects"
+    },
+    {
+        "model-name": "coas",
+        "resource-file": "coas.json",
+        "table-name": "coas"
+    },
+    {
+        "model-name": "products",
+        "resource-file": "products.json",
+        "table-name": "products"
+    },
+    {
+        "model-name": "units",
+        "resource-file": "units.json",
+        "table-name": "units"
+    },
+    {
+        "model-name": "expenditures",
+        "resource-file": "expenditures.json",
+        "table-name": "expenditures"
+    },
+    {
+        "model-name": "general_ledgers",
+        "resource-file": "general_ledgers.json",
+        "table-name": "general_ledgers"
+    }
+]
