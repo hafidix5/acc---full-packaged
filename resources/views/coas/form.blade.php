@@ -2,7 +2,7 @@
 <div class="form-group {{ $errors->has('id') ? 'has-error' : '' }}">
     <label for="id" class="col-md-2 control-label">COA</label>
     <div class="col-md-10">
-        <input class="form-control" name="id" type="number" id="id" value="{{ old('id', optional($coas)->id) }}" minlength="1" maxlength="5" required="true" placeholder="Enter cs code here...">
+        <input class="form-control" name="id" type="number" id="id" value="{{ old('id', optional($coas)->id) }}" required="true" placeholder="Enter coa here...">
         {!! $errors->first('id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -43,10 +43,17 @@
     
     <label for="hpp" class="col-sm-1">HPP</label>
     <div class="col-md-10 form-inline">
-        <input class="form-control" name="hpp" type="checkbox" id="hpp" value="{{ old('hpp', optional($coas)->hpp) }}" {{  ((optional($coas)->hpp) == 1 ? ' checked' : '') }}>
-        {!! $errors->first('hpp', '<p class="help-block">:message</p>') !!}
+        <select class="form-select" name="hpp" id="hpp" aria-label="Default select example">
+            >No</option>
+            <option value="@php $coas->hpp @endphp" @if(old('hpp', $coas->hpp) === 1)  'selected' @endif>Yes</option>
+          </select>
+   {!! $errors->first('hpp', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+
+{{-- perancangan dan pembuatan aplikasi sistem informasi target 
+    *tugas tambahan
+1 aplikasi   --}}
 
 <div class="form-group {{ $errors->has('add_information') ? 'has-error' : '' }}">
     <label for="add_information" class="col-md-2 control-label">Add Information</label>

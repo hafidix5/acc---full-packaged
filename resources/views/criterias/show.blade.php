@@ -16,19 +16,19 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('criterias.criterias.index') }}" class="btn btn-primary" title="Show All Criterias">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                     </a>
 
                     <a href="{{ route('criterias.criterias.create') }}" class="btn btn-success" title="Create New Criterias">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                     </a>
                     
                     <a href="{{ route('criterias.criterias.edit', $criterias->id ) }}" class="btn btn-primary" title="Edit Criterias">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete Criterias" onclick="return confirm(&quot;Click Ok to delete Criterias.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>

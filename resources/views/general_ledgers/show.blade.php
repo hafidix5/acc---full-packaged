@@ -16,19 +16,19 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('general_ledgers.general_ledgers.index') }}" class="btn btn-primary" title="Show All General Ledgers">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                     </a>
 
                     <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                     </a>
                     
                     <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete General Ledgers" onclick="return confirm(&quot;Click Ok to delete General Ledgers.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>

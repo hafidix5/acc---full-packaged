@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Acc App',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -192,7 +192,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-white-primary elevation-3',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -330,28 +330,28 @@ return [
             'icon' => 'fas fa-fw fa-key',
         ], */
         [
-            'text'    => 'Expenditure',
+            'text'    => 'Outcome',
             'url'     => '#',
             'icon'    => 'fas fa-fw fa-credit-card',
             'submenu' => [
                 [
-                    'text' => 'Menu 1',
-                    'url'  => '#',
+                    'text' => 'Expenditures',
+                    'url'  => 'expenditures',
                 ],
                 [
-                    'text' => 'Menu 2',
-                    'url'  => '#',
+                    'text' => 'General Ledgers',
+                    'url'  => 'general_ledgers',
                 ],
                 
             ],
         ],
         [
-            'text'    => 'Omzet',
+            'text'    => 'income',
             'url'     => '#',
             'icon'    => 'fas fa-fw fa-plus-circle',
             'submenu' => [
                 [
-                    'text' => 'Menu 1',
+                    'text' => 'Omzet',
                     'url'  => '#',
                 ],
                 [
@@ -403,7 +403,7 @@ return [
                 ],                
                 [
                     'text' => 'Product',
-                    'url'  => 'product',
+                    'url'  => 'products',
                     'icon'    => 'fas fa-fw fa-tags',
                 ],
                 [

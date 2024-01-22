@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\products;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductsController extends Controller
 {
@@ -46,6 +47,8 @@ class ProductsController extends Controller
         try {
             
             $data = $this->getData($request);
+            $id = IdGenerator::generate(['table' => 'products', 'length' => 3, 'prefix' =>'P']);
+            $data['id']=$id;
             
             products::create($data);
 

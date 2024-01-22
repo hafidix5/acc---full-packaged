@@ -31,7 +31,7 @@ class criterias extends Model
      * @var array
      */
     protected $fillable = [
-                  'name'
+                  'id','name'
               ];
 
     /**

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class coas extends Model
 {
     
-
     /**
      * The database table used by the model.
      *
@@ -81,10 +82,10 @@ class coas extends Model
      * @param  string  $value
      * @return array
      */
-    /* public function getCreatedAtAttribute($value)
+    public function getCreatedAtAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    } */
+    }
 
     /**
      * Get updated_at in array format
@@ -92,9 +93,9 @@ class coas extends Model
      * @param  string  $value
      * @return array
      */
-    /* public function getUpdatedAtAttribute($value)
+    public function getUpdatedAtAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    } */
+    }
 
 }

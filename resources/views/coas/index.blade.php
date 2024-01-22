@@ -42,6 +42,7 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
+                            <th>COA</th>
                             <th>Cs Code</th>
                             <th>Account</th>
                             <th>Beginning Balance</th>
@@ -54,6 +55,7 @@
                     <tbody>
                     @foreach($coasObjects as $coas)
                         <tr>
+                            <td>{{ $coas->id }}</td>
                             <td>{{ $coas->cs_code }}</td>
                             <td>{{ $coas->account }}</td>
                             <td>{{ $coas->beginning_balance }}</td>
@@ -68,14 +70,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('coas.coas.show', $coas->id ) }}" class="btn btn-info" title="Show Coas">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
                                         </a>
                                         <a href="{{ route('coas.coas.edit', $coas->id ) }}" class="btn btn-primary" title="Edit Coas">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Coas" onclick="return confirm(&quot;Click Ok to delete Coas.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                         </button>
                                     </div>
 

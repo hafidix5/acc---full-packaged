@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\units;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class UnitsController extends Controller
 {
@@ -46,6 +47,8 @@ class UnitsController extends Controller
         try {
             
             $data = $this->getData($request);
+            $id = IdGenerator::generate(['table' => 'units', 'length' => 3, 'prefix' =>'U']);
+            $data['id']=$id;
             
             units::create($data);
 

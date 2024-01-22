@@ -12,11 +12,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('products.products.index') }}" class="btn btn-primary" title="Show All Products">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                 </a>
 
                 <a href="{{ route('products.products.create') }}" class="btn btn-success" title="Create New Products">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
 
             </div>

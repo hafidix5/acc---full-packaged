@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\subjects;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class SubjectsController extends Controller
 {
@@ -46,6 +47,8 @@ class SubjectsController extends Controller
         try {
             
             $data = $this->getData($request);
+            $id = IdGenerator::generate(['table' => 'subjects', 'length' => 4, 'prefix' =>'S']);
+            $data['id']=$id;
             
             subjects::create($data);
 

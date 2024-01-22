@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\criterias;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class CriteriasController extends Controller
 {
@@ -46,6 +47,9 @@ class CriteriasController extends Controller
         try {
             
             $data = $this->getData($request);
+            $id = IdGenerator::generate(['table' => 'criterias', 'length' => 3, 'prefix' =>'C']);
+            $data['id']=$id;
+            
             
             criterias::create($data);
 

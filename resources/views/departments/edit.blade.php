@@ -12,11 +12,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('departments.departments.index') }}" class="btn btn-primary" title="Show All Departments">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                 </a>
 
                 <a href="{{ route('departments.departments.create') }}" class="btn btn-success" title="Create New Departments">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
 
             </div>

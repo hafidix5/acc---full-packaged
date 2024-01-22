@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
             </div>
 
@@ -65,14 +65,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('general_ledgers.general_ledgers.show', $generalLedgers->id ) }}" class="btn btn-info" title="Show General Ledgers">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
                                         </a>
                                         <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete General Ledgers" onclick="return confirm(&quot;Click Ok to delete General Ledgers.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                         </button>
                                     </div>
 

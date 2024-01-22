@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\departments;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
+
 
 class DepartmentsController extends Controller
 {
@@ -46,6 +48,9 @@ class DepartmentsController extends Controller
         try {
             
             $data = $this->getData($request);
+            $id = IdGenerator::generate(['table' => 'departments', 'length' => 3, 'prefix' =>'D']);
+            $data['id']=$id;
+            
             
             departments::create($data);
 

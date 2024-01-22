@@ -16,19 +16,19 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('units.units.index') }}" class="btn btn-primary" title="Show All Units">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                     </a>
 
                     <a href="{{ route('units.units.create') }}" class="btn btn-success" title="Create New Units">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                     </a>
                     
                     <a href="{{ route('units.units.edit', $units->id ) }}" class="btn btn-primary" title="Edit Units">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete Units" onclick="return confirm(&quot;Click Ok to delete Units.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>

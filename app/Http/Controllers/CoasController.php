@@ -43,20 +43,21 @@ class CoasController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            
+        //dd($request);
+        /* try { */
+            //dd("test");
             $data = $this->getData($request);
-            dd($data);
+            
             
             coas::create($data);
 
             return redirect()->route('coas.coas.index')
                 ->with('success_message', 'Coas was successfully added.');
-        } catch (Exception $exception) {
+       /*  } catch (Exception $exception) {
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }
+        } */
     }
 
     /**
@@ -98,7 +99,7 @@ class CoasController extends Controller
      */
     public function update($id, Request $request)
     {
-        try {
+        /* try { */
             
             $data = $this->getData($request);
             
@@ -107,11 +108,11 @@ class CoasController extends Controller
 
             return redirect()->route('coas.coas.index')
                 ->with('success_message', 'Coas was successfully updated.');
-        } catch (Exception $exception) {
+       /*  } catch (Exception $exception) {
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }        
+        }      */   
     }
 
     /**
@@ -146,11 +147,12 @@ class CoasController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-                'cs_code' => 'required|string|min:1|max:5',
-            'account' => 'required|numeric|string|min:1|max:40',
+            'id' => 'unique:coas|required|numeric',
+                'cs_code' => 'required|numeric',
+            'account' => 'required|string|min:1|max:40',
             'description' => 'required|string|min:1|max:40',
-            'beginning_balance' => 'required|numeric|min:-9|max:9',
-            'hpp' => 'required|string|min:1|max:1',
+            'beginning_balance' => 'required|numeric',
+            'hpp' => 'required|string',
             'add_information' => 'nullable|string|min:0|max:60', 
         ];
         

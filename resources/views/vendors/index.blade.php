@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('vendors.vendors.create') }}" class="btn btn-success" title="Create New Vendors">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New Vendors</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
             </div>
 
@@ -38,7 +38,8 @@
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
 
-                <table class="table table-striped ">
+               <table class="table table-striped "> 
+                   
                     <thead>
                         <tr>
                             <th>Company Name</th>
@@ -73,14 +74,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('vendors.vendors.show', $vendors->id ) }}" class="btn btn-info" title="Show Vendors">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
                                         </a>
                                         <a href="{{ route('vendors.vendors.edit', $vendors->id ) }}" class="btn btn-primary" title="Edit Vendors">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Vendors" onclick="return confirm(&quot;Click Ok to delete Vendors.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                         </button>
                                     </div>
 
@@ -103,3 +104,4 @@
     
     </div>
 @endsection
+

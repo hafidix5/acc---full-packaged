@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('products.products.create') }}" class="btn btn-success" title="Create New Products">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
             </div>
 
@@ -59,14 +59,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('products.products.show', $products->id ) }}" class="btn btn-info" title="Show Products">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
                                         </a>
                                         <a href="{{ route('products.products.edit', $products->id ) }}" class="btn btn-primary" title="Edit Products">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Products" onclick="return confirm(&quot;Click Ok to delete Products.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                         </button>
                                     </div>
 

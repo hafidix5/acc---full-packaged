@@ -12,11 +12,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('subjects.subjects.index') }}" class="btn btn-primary" title="Show All Subjects">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                 </a>
 
                 <a href="{{ route('subjects.subjects.create') }}" class="btn btn-success" title="Create New Subjects">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
 
             </div>

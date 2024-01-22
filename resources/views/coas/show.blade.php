@@ -16,19 +16,19 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('coas.coas.index') }}" class="btn btn-primary" title="Show All Coas">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
                     </a>
 
                     <a href="{{ route('coas.coas.create') }}" class="btn btn-success" title="Create New Coas">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                     </a>
                     
                     <a href="{{ route('coas.coas.edit', $coas->id ) }}" class="btn btn-primary" title="Edit Coas">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete Coas" onclick="return confirm(&quot;Click Ok to delete Coas.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                     </button>
                 </div>
             </form>

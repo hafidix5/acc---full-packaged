@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('departments.departments.create') }}" class="btn btn-success" title="Create New Departments">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
                 </a>
             </div>
 
@@ -59,14 +59,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('departments.departments.show', $departments->id ) }}" class="btn btn-info" title="Show Departments">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
                                         </a>
                                         <a href="{{ route('departments.departments.edit', $departments->id ) }}" class="btn btn-primary" title="Edit Departments">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Departments" onclick="return confirm(&quot;Click Ok to delete Departments.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
                                         </button>
                                     </div>
 
