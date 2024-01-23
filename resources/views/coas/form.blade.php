@@ -43,10 +43,38 @@
     
     <label for="hpp" class="col-sm-1">HPP</label>
     <div class="col-md-10 form-inline">
-        <select class="form-select" name="hpp" id="hpp" aria-label="Default select example">
-            >No</option>
-            <option value="@php $coas->hpp @endphp" @if(old('hpp', $coas->hpp) === 1)  'selected' @endif>Yes</option>
-          </select>
+        {{-- <select class="form-select" name="hpp" id="hpp" aria-label="Default select example">
+            <option value="" style="display: none;" {{ old('hpp', optional($coas)->hpp ?: '') == '' ? 'selected' : '' }} disabled selected>Select hpp</option>
+           @if(old('hpp', optional($coas)->hpp==1))
+            <option value="1" selected>Yes</option>                       
+           @else
+           @if(old('hpp', optional($coas)->hpp==0))
+           <option value="0" selected>No</option>
+           @else
+           <option value="" disabled selected>Choose</option>
+           @endif
+           @endif
+          </select> --}}
+          <select class="form-control" id="hpp" name="hpp" required="true">
+            <option value="" style="display: none;" {{ old('hpp', optional($coas)->hpp ?: '0') == '' ? 'selected' : '' }} disabled selected>Select hpp</option>
+            @if(old('hpp', optional($coas)->hpp))
+            <option value="optional($coas)->hpp)" >
+            @if((optional($coas)->hpp)==0)
+                No
+            @else
+            Yes
+            @endif    
+            </option>   
+            @endif
+            <option value="0" >No</option>           
+            <option value="1" >Yes</option>
+            
+            {{-- @foreach ($hpp as $key => $Unit)
+            <option value="{{ $key }}" {{ old('hpp', optional($coas)->hpp) == $key ? 'selected' : '' }}>
+                {{ $Unit }}
+            </option>
+        @endforeach --}}
+    </select>
    {!! $errors->first('hpp', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -18,6 +18,7 @@ class CoasController extends Controller
     public function index()
     {
         $coasObjects = coas::paginate(25);
+        //dd($coasObjects[0]->hpp);
 
         return view('coas.index', compact('coasObjects'));
     }
