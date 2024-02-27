@@ -12,8 +12,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('coas.coas.index') }}" class="btn btn-primary" title="Show All Coas">
-                    Show All COA
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
             </div>
 

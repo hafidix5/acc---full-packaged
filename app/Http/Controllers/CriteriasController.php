@@ -50,7 +50,6 @@ class CriteriasController extends Controller
             $id = IdGenerator::generate(['table' => 'criterias', 'length' => 3, 'prefix' =>'C']);
             $data['id']=$id;
             
-            
             criterias::create($data);
 
             return redirect()->route('criterias.criterias.index')

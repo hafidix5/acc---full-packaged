@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Expenditure;
+use App\Models\expenditures;
 use App\Models\general_ledgers;
 use Illuminate\Http\Request;
 use Exception;

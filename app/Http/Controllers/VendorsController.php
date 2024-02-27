@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\vendors;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class VendorsController extends Controller
 {
@@ -46,7 +47,8 @@ class VendorsController extends Controller
         try {
             
             $data = $this->getData($request);
-            
+            $id = IdGenerator::generate(['table' => 'vendors', 'length' => 3, 'prefix' =>'V']);
+            $data['id']=$id;
             vendors::create($data);
 
             return redirect()->route('vendors.vendors.index')

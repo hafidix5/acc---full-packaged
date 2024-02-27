@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 class coas extends Model
 {
     
+
     /**
      * The database table used by the model.
      *

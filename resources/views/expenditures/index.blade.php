@@ -24,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('expenditures.expenditures.create') }}" class="btn btn-success" title="Create New Expenditures">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
             </div>
 
@@ -41,20 +41,22 @@
                 <table class="table table-striped ">
                     <thead>
                         <tr>
-                            <th>Date</th>
+                            <th>Date Payment</th>
+                            <th>Invoices</th>
                             <th>Coas</th>
-                            <th>Products</th>
-                            <th>Subjects</th>
                             <th>Criterias</th>
                             <th>Departments</th>
-                            <th>Vendors</th>
                             <th>Qty</th>
                             <th>Units</th>
                             <th>Price</th>
                             <th>Svc Charge</th>
                             <th>Bank Charge</th>
+                            <th>Discount Percentage</th>
+                            <th>Amount</th>
+                            <th>Payment</th>
                             <th>Signed</th>
-                            <th>Invoice Number</th>
+                            <th>Iscash</th>
+                            <th>Method</th>
                             <th>Add Information</th>
 
                             <th></th>
@@ -63,20 +65,22 @@
                     <tbody>
                     @foreach($expendituresObjects as $expenditures)
                         <tr>
-                            <td>{{ $expenditures->date }}</td>
+                            <td>{{ $expenditures->date_payment }}</td>
+                            <td>{{ optional($expenditures->Invoice)->date }}</td>
                             <td>{{ optional($expenditures->Coa)->cs_code }}</td>
-                            <td>{{ optional($expenditures->Product)->name }}</td>
-                            <td>{{ optional($expenditures->Subject)->name }}</td>
                             <td>{{ optional($expenditures->Criteria)->name }}</td>
                             <td>{{ optional($expenditures->Department)->name }}</td>
-                            <td>{{ optional($expenditures->Vendor)->company_name }}</td>
                             <td>{{ $expenditures->qty }}</td>
                             <td>{{ optional($expenditures->Unit)->name }}</td>
                             <td>{{ $expenditures->price }}</td>
                             <td>{{ $expenditures->svc_charge }}</td>
                             <td>{{ $expenditures->bank_charge }}</td>
+                            <td>{{ $expenditures->discount_percentage }}</td>
+                            <td>{{ $expenditures->amount }}</td>
+                            <td>{{ $expenditures->payment }}</td>
                             <td>{{ $expenditures->signed }}</td>
-                            <td>{{ $expenditures->invoice_number }}</td>
+                            <td>{{ $expenditures->iscash }}</td>
+                            <td>{{ $expenditures->method }}</td>
                             <td>{{ $expenditures->add_information }}</td>
 
                             <td>
@@ -87,14 +91,14 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('expenditures.expenditures.show', $expenditures->id ) }}" class="btn btn-info" title="Show Expenditures">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
                                         <a href="{{ route('expenditures.expenditures.edit', $expenditures->id ) }}" class="btn btn-primary" title="Edit Expenditures">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete Expenditures" onclick="return confirm(&quot;Click Ok to delete Expenditures.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 

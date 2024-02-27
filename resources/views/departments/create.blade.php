@@ -12,7 +12,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('departments.departments.index') }}" class="btn btn-primary" title="Show All Departments">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
             </div>
 

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
 <div class="panel panel-default">
@@ -16,7 +17,7 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('coas.coas.index') }}" class="btn btn-primary" title="Show All Coas">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                     </a>
 
                     <a href="{{ route('coas.coas.create') }}" class="btn btn-success" title="Create New Coas">
@@ -48,7 +49,13 @@
             <dt>Beginning Balance</dt>
             <dd>{{ $coas->beginning_balance }}</dd>
             <dt>Hpp</dt>
-            <dd>{{ $coas->hpp }}</dd>
+            <dd>
+                @if($coas->hpp)                                
+                                    <i class="fa fa-check" aria-hidden="true"></i>                                
+                                @else
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                @endif
+                                </dd>
             <dt>Add Information</dt>
             <dd>{{ $coas->add_information }}</dd>
             <dt>Created At</dt>

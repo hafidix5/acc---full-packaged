@@ -16,11 +16,11 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('general_ledgers.general_ledgers.index') }}" class="btn btn-primary" title="Show All General Ledgers">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                     </a>
 
                     <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                     </a>
                     
                     <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">

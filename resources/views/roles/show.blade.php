@@ -33,3 +33,19 @@
     </div>
 </div>
 @endsection
+
+ {{--  <select class="form-control" id="hpp" name="hpp" required="true">
+            <option value="" style="display: none;" {{ old('hpp', optional($coas)->hpp ?: '0') == '' ? 'selected' : '' }} disabled selected>Select hpp</option>
+            @if(old('hpp', optional($coas)->hpp))
+            <option value="optional($coas)->hpp)" >
+            @if((optional($coas)->hpp)==0)
+                No
+            @else
+            Yes
+            @endif    
+            </option>   
+            @endif
+            <option value="0" >No</option>           
+            <option value="1" >Yes</option>
+        
+    </select> --}}

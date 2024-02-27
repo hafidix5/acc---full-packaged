@@ -31,6 +31,7 @@ class vendors extends Model
      * @var array
      */
     protected $fillable = [
+                  'id',
                   'company_name',
                   'company_address',
                   'npwp',

@@ -31,21 +31,23 @@ class expenditures extends Model
      * @var array
      */
     protected $fillable = [
-                  'date',
+                  'date_payment',
+                  'invoices_id',
                   'coas_id',
-                  'products_id',
-                  'subjects_id',
                   'criterias_id',
                   'departments_id',
-                  'vendors_id',
                   'description',
                   'qty',
                   'units_id',
                   'price',
                   'svc_charge',
                   'bank_charge',
+                  'discount_percentage',
+                  'amount',
+                  'payment',
                   'signed',
-                  'invoice_number',
+                  'iscash',
+                  'method',
                   'add_information'
               ];
 
@@ -64,6 +66,16 @@ class expenditures extends Model
     protected $casts = [];
     
     /**
+     * Get the Invoice for this model.
+     *
+     * @return App\Models\Invoice
+     */
+    public function Invoice()
+    {
+        return $this->belongsTo('App\Models\Invoice','invoices_id','id');
+    }
+
+    /**
      * Get the Coa for this model.
      *
      * @return App\Models\Coa
@@ -71,26 +83,6 @@ class expenditures extends Model
     public function Coa()
     {
         return $this->belongsTo('App\Models\Coa','coas_id','id');
-    }
-
-    /**
-     * Get the Product for this model.
-     *
-     * @return App\Models\Product
-     */
-    public function Product()
-    {
-        return $this->belongsTo('App\Models\Product','products_id','id');
-    }
-
-    /**
-     * Get the Subject for this model.
-     *
-     * @return App\Models\Subject
-     */
-    public function Subject()
-    {
-        return $this->belongsTo('App\Models\Subject','subjects_id','id');
     }
 
     /**
@@ -114,14 +106,11 @@ class expenditures extends Model
     }
 
     /**
-     * Get the Vendor for this model.
+     * Get the Product for this model.
      *
-     * @return App\Models\Vendor
+     * @return App\Models\Product
      */
-    public function Vendor()
-    {
-        return $this->belongsTo('App\Models\Vendor','vendors_id','id');
-    }
+    
 
     /**
      * Get the Unit for this model.
@@ -144,25 +133,25 @@ class expenditures extends Model
     }
 
     /**
-     * Set the date.
+     * Set the date_payment.
      *
      * @param  string  $value
      * @return void
      */
-    public function setDateAttribute($value)
+    public function setDatePaymentAttribute($value)
     {
-        $this->attributes['date'] = !empty($value) ? \DateTime::createFromFormat('j/n/Y g:i A', $value) : null;
+        $this->attributes['date_payment'] = !empty($value) ? \DateTime::createFromFormat('j/n/Y', $value) : null;
     }
 
     /**
-     * Get date in array format
+     * Get date_payment in array format
      *
      * @param  string  $value
      * @return array
      */
-    public function getDateAttribute($value)
+    public function getDatePaymentAttribute($value)
     {
-        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
+        return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y');
     }
 
     /**

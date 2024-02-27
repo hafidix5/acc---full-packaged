@@ -38,8 +38,28 @@
         {!! $errors->first('contact', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
+<div class="form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
+    <label for="payment_method" class="col-md-2 control-label">Payment Method</label>
+    <div class="col-md-10">
+       {{--  <input class="form-control" name="payment_method" type="text" id="payment_method" value="{{ old('payment_method', optional($vendors)->payment_method) }}" minlength="1" maxlength="10" required="true" placeholder="Enter payment method here...">
+        --}}
+        <select class="form-control m-bot15" name="payment_method" id="payment_method">            
+                    {{-- <option value="{{ old('payment_method', optional($vendors)->payment_method)  }}" @selected(old('payment_method') == optional($vendors)->payment_method)>
+                        Metode Pembayaran
+                    </option>  --}}   
+                    <option value="Transfer" @selected(old('payment_method') == 'Transfer')>
+                        Transfer
+                    </option>   
+                    <option value="Cash" @selected(old('payment_method') == 'Cash')>
+                       Cash
+                    </option> 
+                             
+        </select>        
+        {!! $errors->first('payment_method', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
 
-<div class="form-group {{ $errors->has('bank_name') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('bank_name') ? 'has-error' : '' }}" id="bank_name_form">
     <label for="bank_name" class="col-md-2 control-label">Bank Name</label>
     <div class="col-md-10">
         <input class="form-control" name="bank_name" type="text" id="bank_name" value="{{ old('bank_name', optional($vendors)->bank_name) }}" maxlength="15" placeholder="Enter bank name here...">
@@ -47,7 +67,7 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('account_number') ? 'has-error' : '' }}">
+<div class="form-group {{ $errors->has('account_number') ? 'has-error' : '' }}" id="account_number_form">
     <label for="account_number" class="col-md-2 control-label">Account Number</label>
     <div class="col-md-10">
         <input class="form-control" name="account_number" type="text" id="account_number" value="{{ old('account_number', optional($vendors)->account_number) }}" min="0" max="20" placeholder="Enter account number here...">
@@ -55,11 +75,21 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('payment_method') ? 'has-error' : '' }}">
-    <label for="payment_method" class="col-md-2 control-label">Payment Method</label>
-    <div class="col-md-10">
-        <input class="form-control" name="payment_method" type="text" id="payment_method" value="{{ old('payment_method', optional($vendors)->payment_method) }}" minlength="1" maxlength="10" required="true" placeholder="Enter payment method here...">
-        {!! $errors->first('payment_method', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
+<script>
+    $('document').ready(function () {
+    $("#payment_method").change(function () {
+    var data = $(this).val();
+    if (data == "Cash") {
+    $('#bank_name_form').hide();
+    $('#account_number_form').hide();
+    } else {
+    $('#bank_name_form').show();
+    $('#account_number_form').show();
+    }
+    });
+    });
+    </script>
+
+
+
 

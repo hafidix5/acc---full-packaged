@@ -150,7 +150,7 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => true,
+    'layout_fixed_sidebar' => null,
     'layout_fixed_navbar' => null,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
@@ -335,12 +335,12 @@ return [
             'icon'    => 'fas fa-fw fa-credit-card',
             'submenu' => [
                 [
-                    'text' => 'Expenditures',
-                    'url'  => 'expenditures',
+                    'text' => 'Invoices',
+                    'url'  => 'invoices',
                 ],
                 [
-                    'text' => 'General Ledgers',
-                    'url'  => 'general_ledgers',
+                    'text' => 'Expenditures',
+                    'url'  => 'expenditures',
                 ],
                 
             ],
@@ -354,8 +354,21 @@ return [
                     'text' => 'Omzet',
                     'url'  => '#',
                 ],
+                
+                
+            ],
+        ],
+        [
+            'text'    => 'Report',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-file',
+            'submenu' => [
                 [
-                    'text' => 'Menu 2',
+                    'text' => 'Jurnal Umum',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Buku Besar',
                     'url'  => '#',
                 ],
                 
@@ -381,11 +394,7 @@ return [
             'text'    => 'Data Master',
             'icon'    => 'fas fa-fw fa-cogs',
             'submenu' => [
-                [
-                    'text' => 'Subject',
-                    'url'  => 'subjects',
-                    'icon'    => 'fas fa-fw fa-book',
-                ],
+                
                 [
                     'text' => 'Criteria',
                     'url'  => 'criterias',
@@ -400,12 +409,8 @@ return [
                     'text' => 'Vendor',
                     'url'  => 'vendors',
                     'icon'    => 'fas fa-fw fa-industry',
-                ],                
-                [
-                    'text' => 'Product',
-                    'url'  => 'products',
-                    'icon'    => 'fas fa-fw fa-tags',
-                ],
+                ],             
+                
                 [
                     'text' => 'Unit',
                     'url'  => 'units',

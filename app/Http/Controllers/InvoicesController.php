@@ -3,40 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\products;
+use App\Models\vendors;
+use App\Models\invoices;
 use Illuminate\Http\Request;
 use Exception;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
+use Illuminate\Support\Facades\Storage;
 
-class ProductsController extends Controller
+class InvoicesController extends Controller
 {
 
     /**
-     * Display a listing of the products.
+     * Display a listing of the invoices.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $productsObjects = products::paginate(25);
+        $invoicesObjects = invoices::with('vendor')->paginate(25);
 
-        return view('products.index', compact('productsObjects'));
+        return view('invoices.index', compact('invoicesObjects'));
     }
 
     /**
-     * Show the form for creating a new products.
+     * Show the form for creating a new invoices.
      *
      * @return \Illuminate\View\View
      */
     public function create()
     {
+        $Vendors = vendors::pluck('company_name','id')->all();
         
-        
-        return view('products.create');
+        return view('invoices.create', compact('Vendors'));
     }
 
     /**
-     * Store a new products in the storage.
+     * Store a new invoices in the storage.
      *
      * @param Illuminate\Http\Request $request
      *
@@ -44,25 +45,30 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        try {
+      //  dd($request);
+       try {
             
             $data = $this->getData($request);
-            $id = IdGenerator::generate(['table' => 'products', 'length' => 3, 'prefix' =>'P']);
-            $data['id']=$id;
-            
-            products::create($data);
+            if ($request->file('file_invoice')) {
+                $name = $request->file('file_invoice')->getClientOriginalName();
+                $path = $request->file('file_invoice')->store('public/files');
+                $data['file_invoice'] = $request->file('file_invoice')->store('storage/files');
+            }
+            invoices::create($data);
 
-            return redirect()->route('products.products.index')
-                ->with('success_message', 'Products was successfully added.');
+            return redirect()->route('invoices.invoices.index')
+                ->with('success_message', 'Invoices was successfully added.');
         } catch (Exception $exception) {
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
+
+        //        return $exception->getMessage();
         }
     }
 
     /**
-     * Display the specified products.
+     * Display the specified invoices.
      *
      * @param int $id
      *
@@ -70,13 +76,13 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        $products = products::findOrFail($id);
+        $invoices = invoices::with('vendor')->findOrFail($id);
 
-        return view('products.show', compact('products'));
+        return view('invoices.show', compact('invoices'));
     }
 
     /**
-     * Show the form for editing the specified products.
+     * Show the form for editing the specified invoices.
      *
      * @param int $id
      *
@@ -84,14 +90,14 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $products = products::findOrFail($id);
-        
+        $invoices = invoices::findOrFail($id);
+        $Vendors = vendors::pluck('company_name','id')->all();
 
-        return view('products.edit', compact('products'));
+        return view('invoices.edit', compact('invoices','Vendors'));
     }
 
     /**
-     * Update the specified products in the storage.
+     * Update the specified invoices in the storage.
      *
      * @param int $id
      * @param Illuminate\Http\Request $request
@@ -104,11 +110,11 @@ class ProductsController extends Controller
             
             $data = $this->getData($request);
             
-            $products = products::findOrFail($id);
-            $products->update($data);
+            $invoices = invoices::findOrFail($id);
+            $invoices->update($data);
 
-            return redirect()->route('products.products.index')
-                ->with('success_message', 'Products was successfully updated.');
+            return redirect()->route('invoices.invoices.index')
+                ->with('success_message', 'Invoices was successfully updated.');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -117,7 +123,7 @@ class ProductsController extends Controller
     }
 
     /**
-     * Remove the specified products from the storage.
+     * Remove the specified invoices from the storage.
      *
      * @param int $id
      *
@@ -126,11 +132,11 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         try {
-            $products = products::findOrFail($id);
-            $products->delete();
+            $invoices = invoices::findOrFail($id);
+            $invoices->delete();
 
-            return redirect()->route('products.products.index')
-                ->with('success_message', 'Products was successfully deleted.');
+            return redirect()->route('invoices.invoices.index')
+                ->with('success_message', 'Invoices was successfully deleted.');
         } catch (Exception $exception) {
 
             return back()->withInput()
@@ -148,7 +154,10 @@ class ProductsController extends Controller
     protected function getData(Request $request)
     {
         $rules = [
-                'name' => 'required|string|min:1|max:30', 
+            'id'=>'required|string',
+            'date' => 'required',
+            'file_invoice' => 'required|file|mimes:pdf,jpeg,jpg|max:2048',
+            'vendors_id' => 'required', 
         ];
         
         $data = $request->validate($rules);

@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('content')
 
     <div class="panel panel-default">
@@ -7,12 +6,12 @@
         <div class="panel-heading clearfix">
             
             <span class="pull-left">
-                <h4 class="mt-5 mb-5">Create New Subjects</h4>
+                <h4 class="mt-5 mb-5">Create New Invoices</h4>
             </span>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
-                <a href="{{ route('subjects.subjects.index') }}" class="btn btn-primary" title="Show All Subjects">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                <a href="{{ route('invoices.invoices.index') }}" class="btn btn-primary" title="Show All Invoices">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
             </div>
 
@@ -28,10 +27,10 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('subjects.subjects.store') }}" accept-charset="UTF-8" id="create_subjects_form" name="create_subjects_form" class="form-horizontal">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('invoices.invoices.store') }}" accept-charset="UTF-8" id="create_invoices_form" name="create_invoices_form" class="form-horizontal">
             {{ csrf_field() }}
-            @include ('subjects.form', [
-                                        'subjects' => null,
+            @include ('invoices.form', [
+                                        'invoices' => null,
                                       ])
 
                 <div class="form-group">

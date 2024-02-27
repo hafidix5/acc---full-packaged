@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 
-
 @section('content')
 
     <div class="panel panel-default">
@@ -13,7 +12,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('vendors.vendors.index') }}" class="btn btn-primary" title="Show All Vendors">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
             </div>
 

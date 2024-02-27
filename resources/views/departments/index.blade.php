@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     @if(Session::has('success_message'))
@@ -24,7 +25,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('departments.departments.create') }}" class="btn btn-success" title="Create New Departments">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
             </div>
 
@@ -59,7 +60,7 @@
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
                                         <a href="{{ route('departments.departments.show', $departments->id ) }}" class="btn btn-info" title="Show Departments">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Back</span>
                                         </a>
                                         <a href="{{ route('departments.departments.edit', $departments->id ) }}" class="btn btn-primary" title="Edit Departments">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>

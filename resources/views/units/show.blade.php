@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
 <div class="panel panel-default">
@@ -16,11 +17,11 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('units.units.index') }}" class="btn btn-primary" title="Show All Units">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show</span>
                     </a>
 
                     <a href="{{ route('units.units.create') }}" class="btn btn-success" title="Create New Units">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                     </a>
                     
                     <a href="{{ route('units.units.edit', $units->id ) }}" class="btn btn-primary" title="Edit Units">

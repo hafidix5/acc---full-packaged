@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class products extends Model
+class invoices extends Model
 {
     
 
@@ -13,7 +13,7 @@ class products extends Model
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'invoices';
 
     /**
     * The database primary key value.
@@ -23,6 +23,7 @@ class products extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
+    protected $date = 'dd/mm/yyyy';
 
 
     /**
@@ -31,7 +32,10 @@ class products extends Model
      * @var array
      */
     protected $fillable = [
-                  'id','name'
+                  'id',
+                  'date',
+                  'file_invoice',
+                  'vendors_id'
               ];
 
     /**
@@ -49,15 +53,46 @@ class products extends Model
     protected $casts = [];
     
     /**
+     * Get the Vendor for this model.
+     *
+     * @return App\Models\Vendor
+     */
+    public function Vendor()
+    {
+        return $this->belongsTo('App\Models\vendors','vendors_id','id');
+    }
+
+    /**
      * Get the expenditure for this model.
      *
      * @return App\Models\Expenditure
      */
     public function expenditure()
     {
-        return $this->hasOne('App\Models\Expenditure','products_id','id');
+        return $this->hasOne('App\Models\expenditures','invoices_id','id');
     }
 
+    /**
+     * Set the date.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    /* public function setDateAttribute($value)
+    {
+        $this->attributes['date'] = !empty($value) ? \DateTime::createFromFormat('j/n/Y g:i A', $value) : null;
+    } */
+
+    /**
+     * Get date in array format
+     *
+     * @param  string  $value
+     * @return array
+     */
+    /* public function getDateAttribute($value)
+    {
+        return \Date::createFromFormat($this->getDateFormat(), $value)->format('d/m/Y');
+    } */
 
     /**
      * Get created_at in array format

@@ -7,16 +7,16 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">{{ !empty($products->name) ? $products->name : 'Products' }}</h4>
+                <h4 class="mt-5 mb-5">{{ !empty($title) ? $title : 'Invoices' }}</h4>
             </div>
             <div class="btn-group btn-group-sm pull-right" role="group">
 
-                <a href="{{ route('products.products.index') }}" class="btn btn-primary" title="Show All Products">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                <a href="{{ route('invoices.invoices.index') }}" class="btn btn-primary" title="Show All Invoices">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
 
-                <a href="{{ route('products.products.create') }}" class="btn btn-success" title="Create New Products">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                <a href="{{ route('invoices.invoices.create') }}" class="btn btn-success" title="Create New Invoices">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
 
             </div>
@@ -32,11 +32,11 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('products.products.update', $products->id) }}" id="edit_products_form" name="edit_products_form" accept-charset="UTF-8" class="form-horizontal">
+            <form method="POST" action="{{ route('invoices.invoices.update', $invoices->id) }}" id="edit_invoices_form" name="edit_invoices_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
-            @include ('products.form', [
-                                        'products' => $products,
+            @include ('invoices.form', [
+                                        'invoices' => $invoices,
                                       ])
 
                 <div class="form-group">

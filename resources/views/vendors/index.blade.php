@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     @if(Session::has('success_message'))
@@ -24,7 +25,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('vendors.vendors.create') }}" class="btn btn-success" title="Create New Vendors">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
             </div>
 
@@ -38,8 +39,7 @@
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
 
-               <table class="table table-striped "> 
-                   
+                <table class="table table-striped ">
                     <thead>
                         <tr>
                             <th>Company Name</th>
@@ -104,4 +104,3 @@
     
     </div>
 @endsection
-

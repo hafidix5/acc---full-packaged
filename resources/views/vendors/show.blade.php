@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
 <div class="panel panel-default">
@@ -20,7 +21,7 @@
                     </a>
 
                     <a href="{{ route('vendors.vendors.create') }}" class="btn btn-success" title="Create New Vendors">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                     </a>
                     
                     <a href="{{ route('vendors.vendors.edit', $vendors->id ) }}" class="btn btn-primary" title="Edit Vendors">

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     @if(Session::has('success_message'))
@@ -24,7 +25,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('criterias.criterias.create') }}" class="btn btn-success" title="Create New Criterias">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
             </div>
 

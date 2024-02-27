@@ -1,9 +1,25 @@
 
-<div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
-    <label for="date" class="col-md-2 control-label">Date</label>
+<div class="form-group {{ $errors->has('date_payment') ? 'has-error' : '' }}">
+    <label for="date_payment" class="col-md-2 control-label">Date Payment</label>
     <div class="col-md-10">
-        <input class="form-control" name="date" type="text" id="date" value="{{ old('date', optional($expenditures)->date) }}" required="true" placeholder="Enter date here...">
-        {!! $errors->first('date', '<p class="help-block">:message</p>') !!}
+        <input class="form-control" name="date_payment" type="text" id="date_payment" value="{{ old('date_payment', optional($expenditures)->date_payment) }}" required="true" placeholder="Enter date payment here...">
+        {!! $errors->first('date_payment', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('invoices_id') ? 'has-error' : '' }}">
+    <label for="invoices_id" class="col-md-2 control-label">Invoices</label>
+    <div class="col-md-10">
+        <select class="form-control" id="invoices_id" name="invoices_id" required="true">
+        	    <option value="" style="display: none;" {{ old('invoices_id', optional($expenditures)->invoices_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select invoices</option>
+        	@foreach ($Invoices as $key => $Invoice)
+			    <option value="{{ $key }}" {{ old('invoices_id', optional($expenditures)->invoices_id) == $key ? 'selected' : '' }}>
+			    	{{ $Invoice }}
+			    </option>
+			@endforeach
+        </select>
+        
+        {!! $errors->first('invoices_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
@@ -20,38 +36,6 @@
         </select>
         
         {!! $errors->first('coas_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-
-<div class="form-group {{ $errors->has('products_id') ? 'has-error' : '' }}">
-    <label for="products_id" class="col-md-2 control-label">Products</label>
-    <div class="col-md-10">
-        <select class="form-control" id="products_id" name="products_id" required="true">
-        	    <option value="" style="display: none;" {{ old('products_id', optional($expenditures)->products_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select products</option>
-        	@foreach ($Products as $key => $Product)
-			    <option value="{{ $key }}" {{ old('products_id', optional($expenditures)->products_id) == $key ? 'selected' : '' }}>
-			    	{{ $Product }}
-			    </option>
-			@endforeach
-        </select>
-        
-        {!! $errors->first('products_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-
-<div class="form-group {{ $errors->has('subjects_id') ? 'has-error' : '' }}">
-    <label for="subjects_id" class="col-md-2 control-label">Subjects</label>
-    <div class="col-md-10">
-        <select class="form-control" id="subjects_id" name="subjects_id" required="true">
-        	    <option value="" style="display: none;" {{ old('subjects_id', optional($expenditures)->subjects_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select subjects</option>
-        	@foreach ($Subjects as $key => $Subject)
-			    <option value="{{ $key }}" {{ old('subjects_id', optional($expenditures)->subjects_id) == $key ? 'selected' : '' }}>
-			    	{{ $Subject }}
-			    </option>
-			@endforeach
-        </select>
-        
-        {!! $errors->first('subjects_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
@@ -84,22 +68,6 @@
         </select>
         
         {!! $errors->first('departments_id', '<p class="help-block">:message</p>') !!}
-    </div>
-</div>
-
-<div class="form-group {{ $errors->has('vendors_id') ? 'has-error' : '' }}">
-    <label for="vendors_id" class="col-md-2 control-label">Vendors</label>
-    <div class="col-md-10">
-        <select class="form-control" id="vendors_id" name="vendors_id" required="true">
-        	    <option value="" style="display: none;" {{ old('vendors_id', optional($expenditures)->vendors_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select vendors</option>
-        	@foreach ($Vendors as $key => $Vendor)
-			    <option value="{{ $key }}" {{ old('vendors_id', optional($expenditures)->vendors_id) == $key ? 'selected' : '' }}>
-			    	{{ $Vendor }}
-			    </option>
-			@endforeach
-        </select>
-        
-        {!! $errors->first('vendors_id', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
@@ -159,6 +127,30 @@
     </div>
 </div>
 
+<div class="form-group {{ $errors->has('discount_percentage') ? 'has-error' : '' }}">
+    <label for="discount_percentage" class="col-md-2 control-label">Discount Percentage</label>
+    <div class="col-md-10">
+        <input class="form-control" name="discount_percentage" type="number" id="discount_percentage" value="{{ old('discount_percentage', optional($expenditures)->discount_percentage) }}" min="-9" max="9" required="true" placeholder="Enter discount percentage here...">
+        {!! $errors->first('discount_percentage', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('amount') ? 'has-error' : '' }}">
+    <label for="amount" class="col-md-2 control-label">Amount</label>
+    <div class="col-md-10">
+        <input class="form-control" name="amount" type="number" id="amount" value="{{ old('amount', optional($expenditures)->amount) }}" min="-2147483648" max="2147483647" required="true" placeholder="Enter amount here...">
+        {!! $errors->first('amount', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('payment') ? 'has-error' : '' }}">
+    <label for="payment" class="col-md-2 control-label">Payment</label>
+    <div class="col-md-10">
+        <input class="form-control" name="payment" type="number" id="payment" value="{{ old('payment', optional($expenditures)->payment) }}" min="-2147483648" max="2147483647" required="true" placeholder="Enter payment here...">
+        {!! $errors->first('payment', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
 <div class="form-group {{ $errors->has('signed') ? 'has-error' : '' }}">
     <label for="signed" class="col-md-2 control-label">Signed</label>
     <div class="col-md-10">
@@ -167,18 +159,26 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('invoice_number') ? 'has-error' : '' }}">
-    <label for="invoice_number" class="col-md-2 control-label">Invoice Number</label>
+<div class="form-group {{ $errors->has('iscash') ? 'has-error' : '' }}">
+    <label for="iscash" class="col-md-2 control-label">Iscash</label>
     <div class="col-md-10">
-        <input class="form-control" name="invoice_number" type="text" id="invoice_number" value="{{ old('invoice_number', optional($expenditures)->invoice_number) }}" min="1" max="20" required="true" placeholder="Enter invoice number here...">
-        {!! $errors->first('invoice_number', '<p class="help-block">:message</p>') !!}
+        <input class="form-control" name="iscash" type="text" id="iscash" value="{{ old('iscash', optional($expenditures)->iscash) }}" minlength="1" maxlength="1" required="true" placeholder="Enter iscash here...">
+        {!! $errors->first('iscash', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('method') ? 'has-error' : '' }}">
+    <label for="method" class="col-md-2 control-label">Method</label>
+    <div class="col-md-10">
+        <input class="form-control" name="method" type="text" id="method" value="{{ old('method', optional($expenditures)->method) }}" minlength="1" maxlength="1" required="true" placeholder="Enter method here...">
+        {!! $errors->first('method', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
 <div class="form-group {{ $errors->has('add_information') ? 'has-error' : '' }}">
     <label for="add_information" class="col-md-2 control-label">Add Information</label>
     <div class="col-md-10">
-        <input class="form-control" name="add_information" type="number" id="add_information" value="{{ old('add_information', optional($expenditures)->add_information) }}" min="-2147483648" max="2147483647" required="true" placeholder="Enter add information here...">
+        <input class="form-control" name="add_information" type="text" id="add_information" value="{{ old('add_information', optional($expenditures)->add_information) }}" minlength="1" maxlength="50" required="true" placeholder="Enter add information here...">
         {!! $errors->first('add_information', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

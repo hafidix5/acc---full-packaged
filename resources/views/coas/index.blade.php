@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     @if(Session::has('success_message'))
@@ -19,13 +20,12 @@
         <div class="panel-heading clearfix">
 
             <div class="pull-left">
-                <h4 class="mt-5 mb-5">Chart Of Account</h4>
+                <h4 class="mt-5 mb-5">Coas</h4>
             </div>
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('coas.coas.create') }}" class="btn btn-success" title="Create New Coas">
-                    Create New COA
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
             </div>
 
@@ -33,20 +33,20 @@
         
         @if(count($coasObjects) == 0)
             <div class="panel-body text-center">
-                <h4>No COA Available.</h4>
+                <h4>No Coas Available.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
 
-                <table class="table table-striped ">
+                <table class="table table-striped " id="example3'">
                     <thead>
                         <tr>
-                            <th>COA</th>
+                            <th>Account Number</th>
                             <th>Cs Code</th>
                             <th>Account</th>
                             <th>Beginning Balance</th>
-                            <th>HPP</th>
+                            <th>Is HPP</th>
                             <th>Add Information</th>
 
                             <th></th>
@@ -59,7 +59,13 @@
                             <td>{{ $coas->cs_code }}</td>
                             <td>{{ $coas->account }}</td>
                             <td>{{ $coas->beginning_balance }}</td>
-                            <td>{{ $coas->hpp }}</td>
+                            <td>
+                                @if($coas->hpp==1)                                
+                                    <i class="fa fa-check" aria-hidden="true"></i>                                
+                                @else
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                @endif
+                                </td>
                             <td>{{ $coas->add_information }}</td>
 
                             <td>
@@ -99,4 +105,18 @@
         @endif
     
     </div>
+    @push('js')
+    <script>
+        $('#example3').DataTable({
+            "responsive": true,
+            "paging": false,
+            "displayStart": false,
+            dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+        });
+     
+    </script>
+@endpush
 @endsection

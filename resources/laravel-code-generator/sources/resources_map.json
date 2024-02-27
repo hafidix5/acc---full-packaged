@@ -30,13 +30,18 @@
         "table-name": "units"
     },
     {
-        "model-name": "expenditures",
-        "resource-file": "expenditures.json",
-        "table-name": "expenditures"
-    },
-    {
         "model-name": "general_ledgers",
         "resource-file": "general_ledgers.json",
         "table-name": "general_ledgers"
+    },
+    {
+        "model-name": "invoices",
+        "resource-file": "invoices.json",
+        "table-name": "invoices"
+    },
+    {
+        "model-name": "expenditures",
+        "resource-file": "expenditures.json",
+        "table-name": "expenditures"
     }
 ]

@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     <div class="panel panel-default">
@@ -12,11 +13,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('coas.coas.index') }}" class="btn btn-primary" title="Show All Coas">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
 
                 <a href="{{ route('coas.coas.create') }}" class="btn btn-success" title="Create New Coas">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                 </a>
 
             </div>

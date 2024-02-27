@@ -16,11 +16,11 @@
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('expenditures.expenditures.index') }}" class="btn btn-primary" title="Show All Expenditures">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                     </a>
 
                     <a href="{{ route('expenditures.expenditures.create') }}" class="btn btn-success" title="Create New Expenditures">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create New</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
                     </a>
                     
                     <a href="{{ route('expenditures.expenditures.edit', $expenditures->id ) }}" class="btn btn-primary" title="Edit Expenditures">
@@ -39,22 +39,19 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
-            <dt>Date</dt>
-            <dd>{{ $expenditures->date }}</dd>
+            <dt>Date Payment</dt>
+            <dd>{{ $expenditures->date_payment }}</dd>
+            <dt>Invoices</dt>
+            <dd>{{ optional($expenditures->Invoice)->date }}</dd>
             <dt>Coas</dt>
             <dd>{{ optional($expenditures->Coa)->cs_code }}</dd>
-            <dt>Products</dt>
-            <dd>{{ optional($expenditures->Product)->name }}</dd>
-            <dt>Subjects</dt>
-            <dd>{{ optional($expenditures->Subject)->name }}</dd>
             <dt>Criterias</dt>
             <dd>{{ optional($expenditures->Criteria)->name }}</dd>
             <dt>Departments</dt>
             <dd>{{ optional($expenditures->Department)->name }}</dd>
-            <dt>Vendors</dt>
-            <dd>{{ optional($expenditures->Vendor)->company_name }}</dd>
             <dt>Description</dt>
             <dd>{{ $expenditures->description }}</dd>
+           
             <dt>Qty</dt>
             <dd>{{ $expenditures->qty }}</dd>
             <dt>Units</dt>
@@ -65,10 +62,18 @@
             <dd>{{ $expenditures->svc_charge }}</dd>
             <dt>Bank Charge</dt>
             <dd>{{ $expenditures->bank_charge }}</dd>
+            <dt>Discount Percentage</dt>
+            <dd>{{ $expenditures->discount_percentage }}</dd>
+            <dt>Amount</dt>
+            <dd>{{ $expenditures->amount }}</dd>
+            <dt>Payment</dt>
+            <dd>{{ $expenditures->payment }}</dd>
             <dt>Signed</dt>
             <dd>{{ $expenditures->signed }}</dd>
-            <dt>Invoice Number</dt>
-            <dd>{{ $expenditures->invoice_number }}</dd>
+            <dt>Iscash</dt>
+            <dd>{{ $expenditures->iscash }}</dd>
+            <dt>Method</dt>
+            <dd>{{ $expenditures->method }}</dd>
             <dt>Add Information</dt>
             <dd>{{ $expenditures->add_information }}</dd>
             <dt>Created At</dt>

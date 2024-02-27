@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Coa;
-use App\Models\Criteria;
-use App\Models\Department;
-use App\Models\Product;
-use App\Models\Subject;
-use App\Models\Unit;
-use App\Models\Vendor;
+use App\Models\coas;
+use App\Models\criterias;
+use App\Models\departments;
+use App\Models\invoices;
+use App\Models\products;
+use App\Models\units;
 use App\Models\expenditures;
 use Illuminate\Http\Request;
 use Exception;
@@ -24,7 +23,7 @@ class ExpendituresController extends Controller
      */
     public function index()
     {
-        $expendituresObjects = expenditures::with('coa','product','subject','criteria','department','vendor','unit')->paginate(25);
+        $expendituresObjects = expenditures::with('invoice','coa','criteria','department','product','unit')->paginate(25);
 
         return view('expenditures.index', compact('expendituresObjects'));
     }
@@ -36,15 +35,13 @@ class ExpendituresController extends Controller
      */
     public function create()
     {
-        $Coas = Coa::pluck('cs_code','id')->all();
-$Products = Product::pluck('name','id')->all();
-$Subjects = Subject::pluck('name','id')->all();
-$Criterias = Criteria::pluck('name','id')->all();
-$Departments = Department::pluck('name','id')->all();
-$Vendors = Vendor::pluck('company_name','id')->all();
-$Units = Unit::pluck('name','id')->all();
+        $Invoices = invoices::pluck('id','id')->all();
+$Coas = coas::pluck('account','id')->all();
+$Criterias = criterias::pluck('name','id')->all();
+$Departments = departments::pluck('name','id')->all();
+$Units = units::pluck('name','id')->all();
         
-        return view('expenditures.create', compact('Coas','Products','Subjects','Criterias','Departments','Vendors','Units'));
+        return view('expenditures.create', compact('Invoices','Coas','Criterias','Departments','Units'));
     }
 
     /**
@@ -80,7 +77,7 @@ $Units = Unit::pluck('name','id')->all();
      */
     public function show($id)
     {
-        $expenditures = expenditures::with('coa','product','subject','criteria','department','vendor','unit')->findOrFail($id);
+        $expenditures = expenditures::with('invoice','coa','criteria','department','product','unit')->findOrFail($id);
 
         return view('expenditures.show', compact('expenditures'));
     }
@@ -95,15 +92,13 @@ $Units = Unit::pluck('name','id')->all();
     public function edit($id)
     {
         $expenditures = expenditures::findOrFail($id);
-        $Coas = Coa::pluck('cs_code','id')->all();
-$Products = Product::pluck('name','id')->all();
-$Subjects = Subject::pluck('name','id')->all();
-$Criterias = Criteria::pluck('name','id')->all();
-$Departments = Department::pluck('name','id')->all();
-$Vendors = Vendor::pluck('company_name','id')->all();
-$Units = Unit::pluck('name','id')->all();
+        $Invoices = invoices::pluck('date','id')->all();
+$Coas = coas::pluck('cs_code','id')->all();
+$Criterias = criterias::pluck('name','id')->all();
+$Departments = departments::pluck('name','id')->all();
+$Units = units::pluck('name','id')->all();
 
-        return view('expenditures.edit', compact('expenditures','Coas','Products','Subjects','Criterias','Departments','Vendors','Units'));
+        return view('expenditures.edit', compact('expenditures','Invoices','Coas','Criterias','Departments','Units'));
     }
 
     /**
@@ -164,22 +159,24 @@ $Units = Unit::pluck('name','id')->all();
     protected function getData(Request $request)
     {
         $rules = [
-                'date' => 'required|date_format:j/n/Y g:i A',
+                'date_payment' => 'required|date_format:j/n/Y',
+            'invoices_id' => 'required',
             'coas_id' => 'required',
-            'products_id' => 'required',
-            'subjects_id' => 'required',
             'criterias_id' => 'required',
             'departments_id' => 'required',
-            'vendors_id' => 'required',
             'description' => 'required|string|min:1|max:60',
             'qty' => 'required|numeric|min:-2147483648|max:2147483647',
             'units_id' => 'required',
             'price' => 'required|numeric|min:-2147483648|max:2147483647',
             'svc_charge' => 'required|numeric|min:-2147483648|max:2147483647',
             'bank_charge' => 'required|numeric|min:-2147483648|max:2147483647',
+            'discount_percentage' => 'required|numeric|min:-9|max:9',
+            'amount' => 'required|numeric|min:-2147483648|max:2147483647',
+            'payment' => 'required|numeric|min:-2147483648|max:2147483647',
             'signed' => 'required|string|min:1',
-            'invoice_number' => 'required|numeric|string|min:1|max:20',
-            'add_information' => 'required|numeric|min:-2147483648|max:2147483647', 
+            'iscash' => 'required|string|min:1|max:1',
+            'method' => 'required|string|min:1|max:1',
+            'add_information' => 'required|string|min:1|max:50', 
         ];
         
         $data = $request->validate($rules);

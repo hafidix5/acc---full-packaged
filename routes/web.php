@@ -13,6 +13,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\UnitsController;
 use App\Http\Controllers\ExpendituresController;
 use App\Http\Controllers\GeneralLedgersController;
+use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -213,4 +214,23 @@ Route::group([
          ->name('general_ledgers.general_ledgers.update');
     Route::delete('/general_ledgers/{generalLedgers}',[GeneralLedgersController::class, 'destroy'])
          ->name('general_ledgers.general_ledgers.destroy');
+});
+
+Route::group([
+    'prefix' => 'invoices',
+], function () {
+    Route::get('/', [InvoicesController::class, 'index'])
+         ->name('invoices.invoices.index');
+    Route::get('/create', [InvoicesController::class, 'create'])
+         ->name('invoices.invoices.create');
+    Route::get('/show/{invoices}',[InvoicesController::class, 'show'])
+         ->name('invoices.invoices.show');
+    Route::get('/{invoices}/edit',[InvoicesController::class, 'edit'])
+         ->name('invoices.invoices.edit');
+    Route::post('/', [InvoicesController::class, 'store'])
+         ->name('invoices.invoices.store');
+    Route::put('invoices/{invoices}', [InvoicesController::class, 'update'])
+         ->name('invoices.invoices.update');
+    Route::delete('/invoices/{invoices}',[InvoicesController::class, 'destroy'])
+         ->name('invoices.invoices.destroy');
 });

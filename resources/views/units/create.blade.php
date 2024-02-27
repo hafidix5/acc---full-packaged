@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('content')
 
     <div class="panel panel-default">
@@ -12,7 +13,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('units.units.index') }}" class="btn btn-primary" title="Show All Units">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Show All</span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
                 </a>
             </div>
 
