@@ -1,9 +1,9 @@
 {
     "fields": [
         {
-            "name": "id",
-            "labels": "Id",
-            "html-type": "select",
+            "name": "date",
+            "labels": "Date",
+            "html-type": "text",
             "css-class": "",
             "options": {},
             "html-value": null,
@@ -11,10 +11,8 @@
             "is-on-index": false,
             "is-on-show": false,
             "is-on-form": false,
-            "data-type": "string",
-            "data-type-params": [
-                6
-            ],
+            "data-type": "date",
+            "data-type-params": [],
             "data-value": null,
             "is-index": false,
             "is-unique": false,
@@ -22,39 +20,22 @@
             "comment": null,
             "is-nullable": false,
             "is-header": false,
-            "is-unsigned": true,
-            "is-auto-increment": true,
+            "is-unsigned": false,
+            "is-auto-increment": false,
             "is-inline-options": false,
             "is-date": false,
-            "date-format": "",
+            "date-format": "j/n/Y g:i A",
             "cast-as": "",
-            "placeholder": "Enter id here...",
+            "placeholder": "Enter date here...",
             "delimiter": "; ",
             "range": [],
-            "foreign-relation": {
-                "name": "Coa",
-                "type": "belongsTo",
-                "params": [
-                    "App\\Models\\Coa",
-                    "id",
-                    "id"
-                ],
-                "field": "cs_code"
-            },
-            "foreign-constraint": {
-                "field": "id",
-                "references": "coas",
-                "on": "id",
-                "on-delete": "no action",
-                "on-update": "no action",
-                "references-model": "App\\Models\\Coa",
-                "is-self-reference": false
-            },
+            "foreign-relation": null,
+            "foreign-constraint": null,
             "on-store": null,
             "on-update": null,
-            "api-key": "id",
+            "api-key": "date",
             "is-api-visible": true,
-            "api-description": "The id of the model."
+            "api-description": "The date of the model."
         },
         {
             "name": "expenditures_id",
@@ -95,7 +76,7 @@
                     "expenditures_id",
                     "id"
                 ],
-                "field": "date"
+                "field": "date_payment"
             },
             "foreign-constraint": {
                 "field": "expenditures_id",
@@ -113,18 +94,76 @@
             "api-description": "The expenditures of the model."
         },
         {
-            "name": "date",
-            "labels": "Date",
+            "name": "coas_id",
+            "labels": "Coas",
+            "html-type": "select",
+            "css-class": "",
+            "options": {},
+            "html-value": null,
+            "validation": "required",
+            "is-on-index": true,
+            "is-on-show": true,
+            "is-on-form": true,
+            "data-type": "string",
+            "data-type-params": [
+                10
+            ],
+            "data-value": null,
+            "is-index": true,
+            "is-unique": false,
+            "is-primary": false,
+            "comment": null,
+            "is-nullable": false,
+            "is-header": false,
+            "is-unsigned": true,
+            "is-auto-increment": false,
+            "is-inline-options": false,
+            "is-date": false,
+            "date-format": "",
+            "cast-as": "",
+            "placeholder": "Select coas",
+            "delimiter": "; ",
+            "range": [],
+            "foreign-relation": {
+                "name": "Coa",
+                "type": "belongsTo",
+                "params": [
+                    "App\\Models\\Coa",
+                    "coas_id",
+                    "id"
+                ],
+                "field": "cs_code"
+            },
+            "foreign-constraint": {
+                "field": "coas_id",
+                "references": "coas",
+                "on": "id",
+                "on-delete": "no action",
+                "on-update": "no action",
+                "references-model": "App\\Models\\Coa",
+                "is-self-reference": false
+            },
+            "on-store": null,
+            "on-update": null,
+            "api-key": "coas_id",
+            "is-api-visible": true,
+            "api-description": "The coas of the model."
+        },
+        {
+            "name": "information",
+            "labels": "Information",
             "html-type": "text",
             "css-class": "",
             "options": {},
             "html-value": null,
-            "validation": "required|date_format:j/n/Y g:i A",
+            "validation": "required|string|min:1|max:50",
             "is-on-index": true,
             "is-on-show": true,
             "is-on-form": true,
-            "data-type": "date",
-            "data-type-params": [],
+            "data-type": "string",
+            "data-type-params": [
+                50
+            ],
             "data-value": null,
             "is-index": false,
             "is-unique": false,
@@ -136,18 +175,18 @@
             "is-auto-increment": false,
             "is-inline-options": false,
             "is-date": false,
-            "date-format": "j/n/Y g:i A",
+            "date-format": "",
             "cast-as": "",
-            "placeholder": "Enter date here...",
+            "placeholder": "Enter information here...",
             "delimiter": "; ",
             "range": [],
             "foreign-relation": null,
             "foreign-constraint": null,
             "on-store": null,
             "on-update": null,
-            "api-key": "date",
+            "api-key": "information",
             "is-api-visible": true,
-            "api-description": "The date of the model."
+            "api-description": "The information of the model."
         },
         {
             "name": "debet",
@@ -304,7 +343,7 @@
             "name": "PRIMARY",
             "type": "index",
             "columns": [
-                "id",
+                "date",
                 "expenditures_id"
             ]
         }

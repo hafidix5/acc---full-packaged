@@ -1,6 +1,5 @@
 @extends('adminlte::page')
 
-
 @section('content')
 
     @if(Session::has('success_message'))
@@ -25,7 +24,7 @@
 
             <div class="btn-group btn-group-sm pull-right" role="group">
                 <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
             </div>
 
@@ -43,7 +42,8 @@
                     <thead>
                         <tr>
                             <th>Expenditures</th>
-                            <th>Date</th>
+                            <th>Coas</th>
+                            <th>Information</th>
                             <th>Debet</th>
                             <th>Credit</th>
 
@@ -53,27 +53,28 @@
                     <tbody>
                     @foreach($generalLedgersObjects as $generalLedgers)
                         <tr>
-                            <td>{{ optional($generalLedgers->Expenditure)->date }}</td>
-                            <td>{{ $generalLedgers->date }}</td>
+                            <td>{{ optional($generalLedgers->Expenditure)->date_payment }}</td>
+                            <td>{{ optional($generalLedgers->Coa)->cs_code }}</td>
+                            <td>{{ $generalLedgers->information }}</td>
                             <td>{{ $generalLedgers->debet }}</td>
                             <td>{{ $generalLedgers->credit }}</td>
 
                             <td>
 
-                                <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->id) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->date) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('general_ledgers.general_ledgers.show', $generalLedgers->id ) }}" class="btn btn-info" title="Show General Ledgers">
-                                            <span class="glyphicon glyphicon-open" aria-hidden="true">Show</span>
+                                        <a href="{{ route('general_ledgers.general_ledgers.show', $generalLedgers->date ) }}" class="btn btn-info" title="Show General Ledgers">
+                                            <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">
-                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
+                                        <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->date ) }}" class="btn btn-primary" title="Edit General Ledgers">
+                                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
                                         <button type="submit" class="btn btn-danger" title="Delete General Ledgers" onclick="return confirm(&quot;Click Ok to delete General Ledgers.&quot;)">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
+                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                         </button>
                                     </div>
 

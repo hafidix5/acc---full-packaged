@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\coas;
 use App\Models\expenditures;
 use App\Models\general_ledgers;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class GeneralLedgersController extends Controller
      */
     public function index()
     {
-        $generalLedgersObjects = general_ledgers::with('expenditure')->paginate(25);
+        $generalLedgersObjects = general_ledgers::with('expenditure','coa')->paginate(25);
 
         return view('general_ledgers.index', compact('generalLedgersObjects'));
     }
@@ -30,9 +31,10 @@ class GeneralLedgersController extends Controller
      */
     public function create()
     {
-        $Expenditures = Expenditure::pluck('date','id')->all();
+        $Expenditures = Expenditure::pluck('date_payment','id')->all();
+$Coas = Coa::pluck('cs_code','id')->all();
         
-        return view('general_ledgers.create', compact('Expenditures'));
+        return view('general_ledgers.create', compact('Expenditures','Coas'));
     }
 
     /**
@@ -68,7 +70,7 @@ class GeneralLedgersController extends Controller
      */
     public function show($id)
     {
-        $generalLedgers = general_ledgers::with('expenditure')->findOrFail($id);
+        $generalLedgers = general_ledgers::with('expenditure','coa')->findOrFail($id);
 
         return view('general_ledgers.show', compact('generalLedgers'));
     }
@@ -83,9 +85,10 @@ class GeneralLedgersController extends Controller
     public function edit($id)
     {
         $generalLedgers = general_ledgers::findOrFail($id);
-        $Expenditures = Expenditure::pluck('date','id')->all();
+        $Expenditures = Expenditure::pluck('date_payment','id')->all();
+$Coas = Coa::pluck('cs_code','id')->all();
 
-        return view('general_ledgers.edit', compact('generalLedgers','Expenditures'));
+        return view('general_ledgers.edit', compact('generalLedgers','Expenditures','Coas'));
     }
 
     /**
@@ -147,7 +150,8 @@ class GeneralLedgersController extends Controller
     {
         $rules = [
                 'expenditures_id' => 'required',
-            'date' => 'required|date_format:j/n/Y g:i A',
+            'coas_id' => 'required',
+            'information' => 'required|string|min:1|max:50',
             'debet' => 'required|numeric|min:-2147483648|max:2147483647',
             'credit' => 'required|numeric|min:-2147483648|max:2147483647', 
         ];

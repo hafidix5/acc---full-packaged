@@ -7,11 +7,11 @@ use App\Models\coas;
 use App\Models\criterias;
 use App\Models\departments;
 use App\Models\invoices;
-use App\Models\products;
 use App\Models\units;
 use App\Models\expenditures;
 use Illuminate\Http\Request;
 use Exception;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ExpendituresController extends Controller
 {
@@ -23,7 +23,8 @@ class ExpendituresController extends Controller
      */
     public function index()
     {
-        $expendituresObjects = expenditures::with('invoice','coa','criteria','department','product','unit')->paginate(25);
+       
+        $expendituresObjects = expenditures::with('invoice','coa','criteria','department','unit')->paginate(25);
 
         return view('expenditures.index', compact('expendituresObjects'));
     }
@@ -53,19 +54,22 @@ $Units = units::pluck('name','id')->all();
      */
     public function store(Request $request)
     {
-        try {
-            
+        
+       /*  try {
+             */
             $data = $this->getData($request);
-            
+            $id = IdGenerator::generate(['table' => 'expenditures', 'length' => 10, 'prefix' =>'E-']);
+            $data['id']=$id;
+            $data['signed']=auth()->user()->name;
             expenditures::create($data);
 
-            return redirect()->route('expenditures.expenditures.index')
+         /*    return redirect()->route('expenditures.expenditures.index')
                 ->with('success_message', 'Expenditures was successfully added.');
         } catch (Exception $exception) {
 
             return back()->withInput()
                 ->withErrors(['unexpected_error' => 'Unexpected error occurred while trying to process your request.']);
-        }
+        } */
     }
 
     /**
@@ -77,7 +81,7 @@ $Units = units::pluck('name','id')->all();
      */
     public function show($id)
     {
-        $expenditures = expenditures::with('invoice','coa','criteria','department','product','unit')->findOrFail($id);
+        $expenditures = expenditures::with('invoice','coa','criteria','department','unit')->findOrFail($id);
 
         return view('expenditures.show', compact('expenditures'));
     }
@@ -159,21 +163,21 @@ $Units = units::pluck('name','id')->all();
     protected function getData(Request $request)
     {
         $rules = [
-                'date_payment' => 'required|date_format:j/n/Y',
+            'date_payment' => 'required',
             'invoices_id' => 'required',
             'coas_id' => 'required',
             'criterias_id' => 'required',
             'departments_id' => 'required',
             'description' => 'required|string|min:1|max:60',
-            'qty' => 'required|numeric|min:-2147483648|max:2147483647',
+            'qty' => 'required|numeric',
             'units_id' => 'required',
-            'price' => 'required|numeric|min:-2147483648|max:2147483647',
-            'svc_charge' => 'required|numeric|min:-2147483648|max:2147483647',
-            'bank_charge' => 'required|numeric|min:-2147483648|max:2147483647',
-            'discount_percentage' => 'required|numeric|min:-9|max:9',
-            'amount' => 'required|numeric|min:-2147483648|max:2147483647',
-            'payment' => 'required|numeric|min:-2147483648|max:2147483647',
-            'signed' => 'required|string|min:1',
+            'price' => 'required|numeric',
+            'svc_charge' => 'required|numeric',
+            'bank_charge' => 'required|numeric',
+            'discount_percentage' => 'required|numeric',
+            'amount' => 'required|numeric',
+            'payment' => 'required|numeric',
+            'signed' => 'required|string',
             'iscash' => 'required|string|min:1|max:1',
             'method' => 'required|string|min:1|max:1',
             'add_information' => 'required|string|min:1|max:50', 

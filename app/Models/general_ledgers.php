@@ -20,7 +20,7 @@ class general_ledgers extends Model
     *
     * @var string
     */
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'date';
     protected $keyType = 'string';
     public $incrementing = false;
 
@@ -31,8 +31,10 @@ class general_ledgers extends Model
      * @var array
      */
     protected $fillable = [
-                  'expenditures_id',
                   'date',
+                  'expenditures_id',
+                  'coas_id',
+                  'information',
                   'debet',
                   'credit'
               ];
@@ -52,23 +54,23 @@ class general_ledgers extends Model
     protected $casts = [];
     
     /**
-     * Get the Coa for this model.
-     *
-     * @return App\Models\Coa
-     */
-    public function Coa()
-    {
-        return $this->belongsTo('App\Models\Coa','id','id');
-    }
-
-    /**
      * Get the Expenditure for this model.
      *
      * @return App\Models\Expenditure
      */
     public function Expenditure()
     {
-        return $this->belongsTo('App\Models\Expenditure','expenditures_id','id');
+        return $this->belongsTo('App\Models\expenditures','expenditures_id','id');
+    }
+
+    /**
+     * Get the Coa for this model.
+     *
+     * @return App\Models\Coa
+     */
+    public function Coa()
+    {
+        return $this->belongsTo('App\Models\coas','coas_id','id');
     }
 
     /**
@@ -77,10 +79,10 @@ class general_ledgers extends Model
      * @param  string  $value
      * @return void
      */
-    public function setDateAttribute($value)
+   /*  public function setDateAttribute($value)
     {
         $this->attributes['date'] = !empty($value) ? \DateTime::createFromFormat('j/n/Y g:i A', $value) : null;
-    }
+    } */
 
     /**
      * Get date in array format
@@ -88,10 +90,10 @@ class general_ledgers extends Model
      * @param  string  $value
      * @return array
      */
-    public function getDateAttribute($value)
+    /* public function getDateAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y g:i A');
-    }
+    } */
 
     /**
      * Get created_at in array format

@@ -2,7 +2,7 @@
 <div class="form-group {{ $errors->has('date_payment') ? 'has-error' : '' }}">
     <label for="date_payment" class="col-md-2 control-label">Date Payment</label>
     <div class="col-md-10">
-        <input class="form-control" name="date_payment" type="text" id="date_payment" value="{{ old('date_payment', optional($expenditures)->date_payment) }}" required="true" placeholder="Enter date payment here...">
+        <input class="form-control" name="date_payment" type="date" id="date_payment" value="{{ old('date_payment', optional($expenditures)->date_payment) }}" required="true" placeholder="Enter date payment here...">
         {!! $errors->first('date_payment', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
@@ -154,7 +154,7 @@
 <div class="form-group {{ $errors->has('signed') ? 'has-error' : '' }}">
     <label for="signed" class="col-md-2 control-label">Signed</label>
     <div class="col-md-10">
-        <input class="form-control" name="signed" type="text" id="signed" value="{{ old('signed', optional($expenditures)->signed) }}" minlength="1" required="true" placeholder="Enter signed here...">
+        <input class="form-control" name="signed" type="text" id="signed" value="{{ old('signed', optional($expenditures)->signed) }}" minlength="1" required="true" enabled="false" placeholder="Enter signed here...">
         {!! $errors->first('signed', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -13,7 +13,9 @@
         </div>
     @endif
 
-    <div class="panel panel-default">
+
+    
+    <div class="panel panel-default ">
 
         <div class="panel-heading clearfix">
 
@@ -37,7 +39,7 @@
         <div class="panel-body panel-body-with-table">
             <div class="table-responsive">
 
-                <table class="table table-striped ">
+                <table class="table table-bordered table-hover dataTable dtr-inline">
                     <thead>
                         <tr>
                             <th>Invoice Number</th>

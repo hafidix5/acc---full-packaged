@@ -11,24 +11,24 @@
 
         <div class="pull-right">
 
-            <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->id) !!}" accept-charset="UTF-8">
+            <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->date) !!}" accept-charset="UTF-8">
             <input name="_method" value="DELETE" type="hidden">
             {{ csrf_field() }}
                 <div class="btn-group btn-group-sm" role="group">
                     <a href="{{ route('general_ledgers.general_ledgers.index') }}" class="btn btn-primary" title="Show All General Ledgers">
-                        <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                     </a>
 
                     <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     </a>
                     
-                    <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true">Edit</span>
+                    <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->date ) }}" class="btn btn-primary" title="Edit General Ledgers">
+                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                     </a>
 
                     <button type="submit" class="btn btn-danger" title="Delete General Ledgers" onclick="return confirm(&quot;Click Ok to delete General Ledgers.?&quot;)">
-                        <span class="glyphicon glyphicon-trash" aria-hidden="true">Delete</span>
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     </button>
                 </div>
             </form>
@@ -40,9 +40,11 @@
     <div class="panel-body">
         <dl class="dl-horizontal">
             <dt>Expenditures</dt>
-            <dd>{{ optional($generalLedgers->Expenditure)->date }}</dd>
-            <dt>Date</dt>
-            <dd>{{ $generalLedgers->date }}</dd>
+            <dd>{{ optional($generalLedgers->Expenditure)->date_payment }}</dd>
+            <dt>Coas</dt>
+            <dd>{{ optional($generalLedgers->Coa)->cs_code }}</dd>
+            <dt>Information</dt>
+            <dd>{{ $generalLedgers->information }}</dd>
             <dt>Debet</dt>
             <dd>{{ $generalLedgers->debet }}</dd>
             <dt>Credit</dt>

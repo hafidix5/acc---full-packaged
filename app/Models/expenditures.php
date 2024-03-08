@@ -23,6 +23,9 @@ class expenditures extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
+    protected $date_payment = 'dd/mm/yyyy';
+
+
 
 
     /**
@@ -31,6 +34,7 @@ class expenditures extends Model
      * @var array
      */
     protected $fillable = [
+                  'id',
                   'date_payment',
                   'invoices_id',
                   'coas_id',
@@ -72,7 +76,7 @@ class expenditures extends Model
      */
     public function Invoice()
     {
-        return $this->belongsTo('App\Models\Invoice','invoices_id','id');
+        return $this->belongsTo('App\Models\invoices','invoices_id','id');
     }
 
     /**
@@ -82,7 +86,7 @@ class expenditures extends Model
      */
     public function Coa()
     {
-        return $this->belongsTo('App\Models\Coa','coas_id','id');
+        return $this->belongsTo('App\Models\coas','coas_id','id');
     }
 
     /**
@@ -92,7 +96,7 @@ class expenditures extends Model
      */
     public function Criteria()
     {
-        return $this->belongsTo('App\Models\Criteria','criterias_id','id');
+        return $this->belongsTo('App\Models\criterias','criterias_id','id');
     }
 
     /**
@@ -102,7 +106,7 @@ class expenditures extends Model
      */
     public function Department()
     {
-        return $this->belongsTo('App\Models\Department','departments_id','id');
+        return $this->belongsTo('App\Models\departments','departments_id','id');
     }
 
     /**
@@ -119,7 +123,7 @@ class expenditures extends Model
      */
     public function Unit()
     {
-        return $this->belongsTo('App\Models\Unit','units_id','id');
+        return $this->belongsTo('App\Models\units','units_id','id');
     }
 
     /**
@@ -129,7 +133,7 @@ class expenditures extends Model
      */
     public function generalLedger()
     {
-        return $this->hasOne('App\Models\GeneralLedger','expenditures_id','id');
+        return $this->hasOne('App\Models\general_ledgers','expenditures_id','id');
     }
 
     /**
@@ -138,10 +142,10 @@ class expenditures extends Model
      * @param  string  $value
      * @return void
      */
-    public function setDatePaymentAttribute($value)
+   /*  public function setDatePaymentAttribute($value)
     {
         $this->attributes['date_payment'] = !empty($value) ? \DateTime::createFromFormat('j/n/Y', $value) : null;
-    }
+    } */
 
     /**
      * Get date_payment in array format
@@ -149,10 +153,10 @@ class expenditures extends Model
      * @param  string  $value
      * @return array
      */
-    public function getDatePaymentAttribute($value)
+   /*  public function getDatePaymentAttribute($value)
     {
         return \DateTime::createFromFormat($this->getDateFormat(), $value)->format('j/n/Y');
-    }
+    } */
 
     /**
      * Get created_at in array format

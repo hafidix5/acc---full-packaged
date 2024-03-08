@@ -15,11 +15,27 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('date') ? 'has-error' : '' }}">
-    <label for="date" class="col-md-2 control-label">Date</label>
+<div class="form-group {{ $errors->has('coas_id') ? 'has-error' : '' }}">
+    <label for="coas_id" class="col-md-2 control-label">Coas</label>
     <div class="col-md-10">
-        <input class="form-control" name="date" type="text" id="date" value="{{ old('date', optional($generalLedgers)->date) }}" required="true" placeholder="Enter date here...">
-        {!! $errors->first('date', '<p class="help-block">:message</p>') !!}
+        <select class="form-control" id="coas_id" name="coas_id" required="true">
+        	    <option value="" style="display: none;" {{ old('coas_id', optional($generalLedgers)->coas_id ?: '') == '' ? 'selected' : '' }} disabled selected>Select coas</option>
+        	@foreach ($Coas as $key => $Coa)
+			    <option value="{{ $key }}" {{ old('coas_id', optional($generalLedgers)->coas_id) == $key ? 'selected' : '' }}>
+			    	{{ $Coa }}
+			    </option>
+			@endforeach
+        </select>
+        
+        {!! $errors->first('coas_id', '<p class="help-block">:message</p>') !!}
+    </div>
+</div>
+
+<div class="form-group {{ $errors->has('information') ? 'has-error' : '' }}">
+    <label for="information" class="col-md-2 control-label">Information</label>
+    <div class="col-md-10">
+        <input class="form-control" name="information" type="text" id="information" value="{{ old('information', optional($generalLedgers)->information) }}" minlength="1" maxlength="50" required="true" placeholder="Enter information here...">
+        {!! $errors->first('information', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 

@@ -1,5 +1,4 @@
 @extends('adminlte::page')
-
 @section('content')
 
     <div class="panel panel-default">
@@ -12,11 +11,11 @@
             <div class="btn-group btn-group-sm pull-right" role="group">
 
                 <a href="{{ route('general_ledgers.general_ledgers.index') }}" class="btn btn-primary" title="Show All General Ledgers">
-                    <span class="glyphicon glyphicon-th-list" aria-hidden="true">Back</span>
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
                 </a>
 
                 <a href="{{ route('general_ledgers.general_ledgers.create') }}" class="btn btn-success" title="Create New General Ledgers">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true">Create</span>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 </a>
 
             </div>
@@ -32,7 +31,7 @@
                 </ul>
             @endif
 
-            <form method="POST" action="{{ route('general_ledgers.general_ledgers.update', $generalLedgers->id) }}" id="edit_general_ledgers_form" name="edit_general_ledgers_form" accept-charset="UTF-8" class="form-horizontal">
+            <form method="POST" action="{{ route('general_ledgers.general_ledgers.update', $generalLedgers->date) }}" id="edit_general_ledgers_form" name="edit_general_ledgers_form" accept-charset="UTF-8" class="form-horizontal">
             {{ csrf_field() }}
             <input name="_method" type="hidden" value="PUT">
             @include ('general_ledgers.form', [
