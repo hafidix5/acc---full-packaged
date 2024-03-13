@@ -55,7 +55,7 @@
                             <th>Amount</th>
                             <th>Payment</th>
                             <th>Signed</th>
-                            <th>Iscash</th>
+                            <th>Cashless Option</th>
                             <th>Method</th>
                             <th>Add Information</th>
 
@@ -80,10 +80,10 @@
                             <td>{{ $expenditures->payment }}</td>
                             <td>{{ $expenditures->signed }}</td>
                             <td>
-                                @if($expenditures->iscash==1)                                
-                                Yes                               
+                                @if($expenditures->cashless_option==1)                                
+                                BCA                               
                                 @else
-                                No
+                                Dana
                                 @endif
                             </td>
                             <td>

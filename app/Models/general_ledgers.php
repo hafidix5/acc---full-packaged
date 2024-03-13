@@ -20,7 +20,7 @@ class general_ledgers extends Model
     *
     * @var string
     */
-    protected $primaryKey = 'date';
+    protected $primaryKey = 'id, date, expenditures_id';
     protected $keyType = 'string';
     public $incrementing = false;
 
@@ -31,6 +31,7 @@ class general_ledgers extends Model
      * @var array
      */
     protected $fillable = [
+                  'id',
                   'date',
                   'expenditures_id',
                   'coas_id',

@@ -50,7 +50,7 @@ class expenditures extends Model
                   'amount',
                   'payment',
                   'signed',
-                  'iscash',
+                  'cashless_option',
                   'method',
                   'add_information'
               ];

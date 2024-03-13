@@ -39,6 +39,8 @@
 
     <div class="panel-body">
         <dl class="dl-horizontal">
+            <dt>Expenditures ID</dt>
+            <dd>{{ $expenditures->id }}</dd>
             <dt>Date Payment</dt>
             <dd>{{ $expenditures->date_payment }}</dd>
             <dt>Invoices</dt>

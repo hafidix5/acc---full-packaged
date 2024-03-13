@@ -9,13 +9,14 @@ use App\Models\departments;
 use App\Models\invoices;
 use App\Models\units;
 use App\Models\expenditures;
+use App\Models\general_ledgers;
 use Illuminate\Http\Request;
 use Exception;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ExpendituresController extends Controller
 {
-
+public $save_gl;
     /**
      * Display a listing of the expenditures.
      *
@@ -25,7 +26,7 @@ class ExpendituresController extends Controller
     {
        
         $expendituresObjects = expenditures::with('invoice','coa','criteria','department','unit')->paginate(25);
-
+      
         return view('expenditures.index', compact('expendituresObjects'));
     }
 
@@ -41,8 +42,8 @@ $Coas = coas::pluck('account','id')->all();
 $Criterias = criterias::pluck('name','id')->all();
 $Departments = departments::pluck('name','id')->all();
 $Units = units::pluck('name','id')->all();
-        
-        return view('expenditures.create', compact('Invoices','Coas','Criterias','Departments','Units'));
+$signed=auth()->user()->name;    
+        return view('expenditures.create', compact('Invoices','Coas','Criterias','Departments','Units','signed'));
     }
 
     /**
@@ -55,15 +56,18 @@ $Units = units::pluck('name','id')->all();
     public function store(Request $request)
     {
         
-       /*  try {
-             */
+       // try {
+            
             $data = $this->getData($request);
             $id = IdGenerator::generate(['table' => 'expenditures', 'length' => 10, 'prefix' =>'E-']);
             $data['id']=$id;
             $data['signed']=auth()->user()->name;
             expenditures::create($data);
-
-         /*    return redirect()->route('expenditures.expenditures.index')
+            
+            $this->set_gl($data['date_payment'],$data['id'],$data['coas_id'],$data['description'],
+            $data['payment'],$data['payment']);
+            
+           /*  return redirect()->route('expenditures.expenditures.index')
                 ->with('success_message', 'Expenditures was successfully added.');
         } catch (Exception $exception) {
 
@@ -79,9 +83,23 @@ $Units = units::pluck('name','id')->all();
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function set_gl($date, $expenditures_id, $coas_id, $description, $debet, $credit)
     {
-        $expenditures = expenditures::with('invoice','coa','criteria','department','unit')->findOrFail($id);
+            $general_ledgers=new general_ledgers();
+            $id = IdGenerator::generate(['table' => 'general_ledgers', 'length' => 12, 'prefix' =>date('ym')]);
+            $general_ledgers->id=$id;
+            $general_ledgers->date=$date;
+            $general_ledgers->expenditures_id=$expenditures_id;
+            $general_ledgers->coas_id=$coas_id;
+            $general_ledgers->information=$description;
+            $general_ledgers->debet=$debet;
+            $general_ledgers->credit=$credit;
+            $general_ledgers->save();
+    }
+
+     public function show($id)
+    {
+        $expenditures = expenditures::findOrFail($id);
 
         return view('expenditures.show', compact('expenditures'));
     }
@@ -177,8 +195,8 @@ $Units = units::pluck('name','id')->all();
             'discount_percentage' => 'required|numeric',
             'amount' => 'required|numeric',
             'payment' => 'required|numeric',
-            'signed' => 'required|string',
-            'iscash' => 'required|string|min:1|max:1',
+            //'signed' => 'required|string',
+            'cashless_option' => 'required|string|min:1|max:1',
             'method' => 'required|string|min:1|max:1',
             'add_information' => 'required|string|min:1|max:50', 
         ];

@@ -151,26 +151,56 @@
     </div>
 </div>
 
-<div class="form-group {{ $errors->has('signed') ? 'has-error' : '' }}">
+{{-- <div class="form-group {{ $errors->has('signed') ? 'has-error' : '' }}">
     <label for="signed" class="col-md-2 control-label">Signed</label>
     <div class="col-md-10">
-        <input class="form-control" name="signed" type="text" id="signed" value="{{ old('signed', optional($expenditures)->signed) }}" minlength="1" required="true" enabled="false" placeholder="Enter signed here...">
+        <input class="form-control" name="signed" type="text" id="signed" value="{{ old('signed', optional($expenditures)->signed) }}" minlength="1" required="true" disabled="true" placeholder="Enter signed here...">
         {!! $errors->first('signed', '<p class="help-block">:message</p>') !!}
     </div>
-</div>
+</div> --}}
 
-<div class="form-group {{ $errors->has('iscash') ? 'has-error' : '' }}">
-    <label for="iscash" class="col-md-2 control-label">Iscash</label>
+<div class="form-group {{ $errors->has('cashless_option') ? 'has-error' : '' }}">
+    <label for="cashless_option" class="col-md-2 control-label">Cashless Option</label>
     <div class="col-md-10">
-        <input class="form-control" name="iscash" type="text" id="iscash" value="{{ old('iscash', optional($expenditures)->iscash) }}" minlength="1" maxlength="1" required="true" placeholder="Enter iscash here...">
-        {!! $errors->first('iscash', '<p class="help-block">:message</p>') !!}
+       {{--  <input class="form-control" name="cashless_option" type="text" id="cashless_option" value="{{ old('cashless_option', optional($expenditures)->cashless_option) }}" minlength="1" maxlength="1" required="true" placeholder="Enter cashless_option here...">
+        --}} <select class="form-control" id="cashless_option" name="cashless_option" required="true">
+            <option value="" style="display: none;" {{ old('cashless_option', optional($expenditures)->cashless_option ?: '0') == '' ? 'selected' : '' }} disabled selected>Select cashless option</option>
+            @if(old('cashless_option', optional($expenditures)->cashless_option))
+            <option value="optional($coas)->cashless_option)" >
+            @if((optional($expenditures)->cashless_option)==0)
+            Dana
+            @else
+            BCA
+            @endif    
+            </option>   
+            @endif
+            <option value="0" >Dana</option>           
+            <option value="1" >BCA</option>
+        
+    </select>
+        {!! $errors->first('cashless_option', '<p class="help-block">:message</p>') !!}
     </div>
 </div>
 
 <div class="form-group {{ $errors->has('method') ? 'has-error' : '' }}">
     <label for="method" class="col-md-2 control-label">Method</label>
     <div class="col-md-10">
-        <input class="form-control" name="method" type="text" id="method" value="{{ old('method', optional($expenditures)->method) }}" minlength="1" maxlength="1" required="true" placeholder="Enter method here...">
+       {{--  <input class="form-control" name="method" type="text" id="method" value="{{ old('method', optional($expenditures)->method) }}" minlength="1" maxlength="1" required="true" placeholder="Enter method here...">
+        --}} <select class="form-control" id="method" name="method" required="true">
+            <option value="" style="display: none;" {{ old('method', optional($expenditures)->method ?: '0') == '' ? 'selected' : '' }} disabled selected>Select method</option>
+            @if(old('method', optional($expenditures)->method))
+            <option value="optional($coas)->method)" >
+            @if((optional($expenditures)->method)==0)
+            Cash
+            @else
+            Cashless
+            @endif    
+            </option>   
+            @endif
+            <option value="0">Cash</option>           
+            <option value="1">Cashless</option>
+        
+    </select>
         {!! $errors->first('method', '<p class="help-block">:message</p>') !!}
     </div>
 </div>

@@ -365,7 +365,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Jurnal Umum',
-                    'url'  => '#',
+                    'url'  => 'general_ledgers',
                 ],
                 [
                     'text' => 'Buku Besar',
