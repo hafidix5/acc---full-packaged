@@ -3,6 +3,17 @@
 
 @section('content')
 
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Users Management</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+        </div>
+    </div>
+</div>
+
     @if(Session::has('success_message'))
         <div class="alert alert-success">
             <span class="glyphicon glyphicon-ok"></span>
@@ -15,7 +26,7 @@
         </div>
     @endif
 
-    <div class="panel panel-default">
+  {{--   <div class="panel panel-default">
 
         <div class="panel-heading clearfix">
 
@@ -29,22 +40,37 @@
                 </a>
             </div>
 
-        </div>
+        </div> --}}
         
-        @if(count($coasObjects) == 0)
+       {{--  @if(count($coasObjects) == 0)
             <div class="panel-body text-center">
                 <h4>No Coas Available.</h4>
             </div>
         @else
         <div class="panel-body panel-body-with-table">
-            <div class="table-responsive">
+            <div class="table-responsive"> --}}
 
-                <table class="table table-striped " id="example3'">
+@php
+$heads = [
+    
+    'Account Number',
+    'Cs Code',
+    'Account',
+    'Description',
+    'Beginning Balance',
+    'Is HPP',
+    'Add Information',
+    ['label' => 'Action', 'width' => 280],
+];
+@endphp
+
+              {{--   <table class="table table-striped " id="example3'">
                     <thead>
                         <tr>
                             <th>Account Number</th>
                             <th>Cs Code</th>
                             <th>Account</th>
+                            <th>Description</th>
                             <th>Beginning Balance</th>
                             <th>Is HPP</th>
                             <th>Add Information</th>
@@ -52,12 +78,15 @@
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody> --}}
+                        <x-adminlte-datatable id="example2" style="width: 100%;" :heads="$heads" striped hoverable bordered compressed beautify >
+ 
                     @foreach($coasObjects as $coas)
                         <tr>
                             <td>{{ $coas->id }}</td>
                             <td>{{ $coas->cs_code }}</td>
                             <td>{{ $coas->account }}</td>
+                            <td>{{ $coas->description }}</td>
                             <td>{{ $coas->beginning_balance }}</td>
                             <td>
                                 @if($coas->hpp==1)                                
@@ -92,20 +121,22 @@
                             </td>
                         </tr>
                     @endforeach
-                    </tbody>
-                </table>
+                   {{--  </tbody>
+                </table> --}}
+            </x-adminlte-datatable>
 
-            </div>
-        </div>
+           {{--  </div>
+        </div> --}}
 
-        <div class="panel-footer">
+        {{-- <div class="panel-footer">
             {!! $coasObjects->render() !!}
-        </div>
+        </div> --}}
+        {!! $coasObjects->render() !!}
         
-        @endif
+    {{--     @endif --}}
     
-    </div>
-    @push('js')
+    {{-- </div> --}}
+    {{-- @push('js')
     <script>
         $('#example3').DataTable({
             "responsive": true,
@@ -118,5 +149,5 @@
         });
      
     </script>
-@endpush
+@endpush --}}
 @endsection

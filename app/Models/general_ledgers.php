@@ -20,7 +20,7 @@ class general_ledgers extends Model
     *
     * @var string
     */
-    protected $primaryKey = 'id, date, expenditures_id';
+    protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
 

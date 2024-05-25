@@ -15,11 +15,14 @@ class CoasController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
-        $coasObjects = coas::paginate(25);
+        //$coasObjects = coas::paginate(25);
+        $coasObjects = coas::orderBy('id','DESC')->paginate(5);
+        return view('coas.index',compact('coasObjects'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
 
-        return view('coas.index', compact('coasObjects'));
+       // return view('coas.index', compact('coasObjects'));
     }
 
     /**

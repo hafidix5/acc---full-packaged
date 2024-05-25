@@ -31,7 +31,7 @@ $heads = [
 ];
 @endphp
 
-<x-adminlte-datatable id="example2" style="width: 100%;" :heads="$heads" striped hoverable bordered compressed beautify >
+<x-adminlte-datatable id="example1" style="width: 100%;" :heads="$heads" striped hoverable bordered compressed beautify >
  
  @foreach ($data as $key => $user)
   <tr>

@@ -374,22 +374,7 @@ return [
                 
             ],
         ],
-        [
-            'text'    => 'Account Setting',
-            'icon'    => 'fas fa-fw fa-user',
-            'submenu' => [
-                [
-                    'text' => 'Users',
-                    'url'  => 'users',
-                    'icon' => 'fas fa-fw fa-user',
-                ],
-                [
-                    'text' => 'Roles',
-                    'url'  => 'roles',
-                    'icon' => 'fas fa-fw fa-key',
-                ],
-            ],
-        ],
+        
         [
             'text'    => 'Data Master',
             'icon'    => 'fas fa-fw fa-cogs',
@@ -449,6 +434,88 @@ return [
                     'text' => 'level_one',
                     'url'  => '#',
                 ], */
+            ],
+        ],
+        ['header' => 'Housing'],
+        [
+            'text'    => 'Housing',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-building',
+            'submenu' => [
+                [
+                    'text' => 'Housing',
+                    'url'  => 'housings',
+                ],
+                [
+                    'text' => 'Role',
+                    'url'  => 'housings_roles',
+                ],
+                [
+                    'text' => 'CareTaker',
+                    'url'  => 'housings_hasroles',
+                ],
+                
+            ],
+        ],
+        [
+            'text'    => 'Activity',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-tasks',
+            'submenu' => [
+                [
+                    'text' => 'Give Feed',
+                    'url'  => 'housings_givefeeds',
+                ],               
+                [
+                    'text' => 'Give Treatment',
+                    'url'  => 'housings_givetreatments',
+                ],
+                
+            ],
+        ],
+        [
+            'text'    => 'Storage',
+            'url'     => '#',
+            'icon'    => 'fas fa-fw fa-industry',
+            'submenu' => [
+                [
+                    'text' => 'Storage',
+                    'url'  => 'housings_storages',
+                ],
+                [
+                    'text' => 'Material',
+                    'url'  => 'housings_materials',
+                ],
+                [
+                    'text' => 'Stock Opname',
+                    'url'  => 'housings_stockopnames',
+                ],
+                [
+                    'text' => 'Egg Sorted',
+                    'url'  => 'housings_eggsorteds',
+                ],
+                [
+                    'text' => 'Sell',
+                    'url'  => 'housings_sells',
+                ],
+                
+            ],
+        ],
+        ['header' => 'Account'],
+        [
+            'text'    => 'Account Setting',
+            'icon'    => 'fas fa-fw fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Users',
+                    'url'  => 'users',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'Roles',
+                    'url'  => 'roles',
+                    'icon' => 'fas fa-fw fa-key',
+                ],
             ],
         ],
         ['header' => 'labels'],

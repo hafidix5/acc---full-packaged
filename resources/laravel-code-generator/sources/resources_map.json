@@ -43,5 +43,75 @@
         "model-name": "general_ledgers",
         "resource-file": "general_ledgers.json",
         "table-name": "general_ledgers"
+    },
+    {
+        "model-name": "HousingsEggSorteds",
+        "resource-file": "housings_egg_sorteds.json",
+        "table-name": "housings_egg_sorteds"
+    },
+    {
+        "model-name": "HousingsGiveFeeds",
+        "resource-file": "housings_give_feeds.json",
+        "table-name": "housings_give_feeds"
+    },
+    {
+        "model-name": "Housings",
+        "resource-file": "housings.json",
+        "table-name": "housings"
+    },
+    {
+        "model-name": "housings_eggsorteds",
+        "resource-file": "housings_eggsorteds.json",
+        "table-name": "housings_eggsorteds"
+    },
+    {
+        "model-name": "housings_givefeeds",
+        "resource-file": "housings_givefeeds.json",
+        "table-name": "housings_givefeeds"
+    },
+    {
+        "model-name": "housings_givetreatments",
+        "resource-file": "housings_givetreatments.json",
+        "table-name": "housings_givetreatments"
+    },
+    {
+        "model-name": "housings_hasroles",
+        "resource-file": "housings_hasroles.json",
+        "table-name": "housings_hasroles"
+    },
+    {
+        "model-name": "housings_materials",
+        "resource-file": "housings_materials.json",
+        "table-name": "housings_materials"
+    },
+    {
+        "model-name": "housings_materialtypes",
+        "resource-file": "housings_materialtypes.json",
+        "table-name": "housings_materialtypes"
+    },
+    {
+        "model-name": "housings_roles",
+        "resource-file": "housings_roles.json",
+        "table-name": "housings_roles"
+    },
+    {
+        "model-name": "housings_sells",
+        "resource-file": "housings_sells.json",
+        "table-name": "housings_sells"
+    },
+    {
+        "model-name": "housings_stockopnames",
+        "resource-file": "housings_stockopnames.json",
+        "table-name": "housings_stockopnames"
+    },
+    {
+        "model-name": "housings_storages",
+        "resource-file": "housings_storages.json",
+        "table-name": "housings_storages"
+    },
+    {
+        "model-name": "housings_units",
+        "resource-file": "housings_units.json",
+        "table-name": "housings_units"
     }
 ]

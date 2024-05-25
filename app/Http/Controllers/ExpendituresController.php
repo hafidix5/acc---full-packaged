@@ -63,9 +63,18 @@ $signed=auth()->user()->name;
             $data['id']=$id;
             $data['signed']=auth()->user()->name;
             expenditures::create($data);
+
+            if(($data['coas_id']=='1011')||($data['coas_id']=='1012'))
+            {
+                $this->set_glmodalawal($data['date_payment'],$data['id'],$data['coas_id'],$data['description'],
+            $data['payment'],3011);
+            }
+           /*  else
+            {
+                if()
+            } */
             
-            $this->set_gl($data['date_payment'],$data['id'],$data['coas_id'],$data['description'],
-            $data['payment'],$data['payment']);
+            
             
            /*  return redirect()->route('expenditures.expenditures.index')
                 ->with('success_message', 'Expenditures was successfully added.');
@@ -83,7 +92,7 @@ $signed=auth()->user()->name;
      *
      * @return \Illuminate\View\View
      */
-    public function set_gl($date, $expenditures_id, $coas_id, $description, $debet, $credit)
+    public function set_glmodalawal($date, $expenditures_id, $coas_id, $description, $payment,$coas_id2)
     {
             $general_ledgers=new general_ledgers();
             $id = IdGenerator::generate(['table' => 'general_ledgers', 'length' => 12, 'prefix' =>date('ym')]);
@@ -92,8 +101,19 @@ $signed=auth()->user()->name;
             $general_ledgers->expenditures_id=$expenditures_id;
             $general_ledgers->coas_id=$coas_id;
             $general_ledgers->information=$description;
-            $general_ledgers->debet=$debet;
-            $general_ledgers->credit=$credit;
+            $general_ledgers->debet=$payment;
+            $general_ledgers->credit=0;
+            $general_ledgers->save();
+
+            $general_ledgers=new general_ledgers();
+            $id = IdGenerator::generate(['table' => 'general_ledgers', 'length' => 12, 'prefix' =>date('ym')]);
+            $general_ledgers->id=$id;
+            $general_ledgers->date=$date;
+            $general_ledgers->expenditures_id=$expenditures_id;
+            $general_ledgers->coas_id=$coas_id2;
+            $general_ledgers->information=$description;
+            $general_ledgers->debet=0;
+            $general_ledgers->credit=$payment;
             $general_ledgers->save();
     }
 

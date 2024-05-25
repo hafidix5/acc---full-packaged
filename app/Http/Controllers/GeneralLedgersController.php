@@ -85,8 +85,8 @@ $Coas = Coa::pluck('cs_code','id')->all();
     public function edit($id)
     {
         $generalLedgers = general_ledgers::findOrFail($id);
-        $Expenditures = Expenditure::pluck('date_payment','id')->all();
-$Coas = Coa::pluck('cs_code','id')->all();
+        $Expenditures = expenditures::pluck('date_payment','id')->all();
+$Coas = coas::pluck('cs_code','id')->all();
 
         return view('general_ledgers.edit', compact('generalLedgers','Expenditures','Coas'));
     }

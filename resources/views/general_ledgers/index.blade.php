@@ -61,15 +61,15 @@
 
                             <td>
 
-                                <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->date) !!}" accept-charset="UTF-8">
+                                <form method="POST" action="{!! route('general_ledgers.general_ledgers.destroy', $generalLedgers->id) !!}" accept-charset="UTF-8">
                                 <input name="_method" value="DELETE" type="hidden">
                                 {{ csrf_field() }}
 
                                     <div class="btn-group btn-group-xs pull-right" role="group">
-                                        <a href="{{ route('general_ledgers.general_ledgers.show', $generalLedgers->date ) }}" class="btn btn-info" title="Show General Ledgers">
+                                        <a href="{{ route('general_ledgers.general_ledgers.show', $generalLedgers->id ) }}" class="btn btn-info" title="Show General Ledgers">
                                             <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
                                         </a>
-                                        <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->date ) }}" class="btn btn-primary" title="Edit General Ledgers">
+                                        <a href="{{ route('general_ledgers.general_ledgers.edit', $generalLedgers->id ) }}" class="btn btn-primary" title="Edit General Ledgers">
                                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                         </a>
 
